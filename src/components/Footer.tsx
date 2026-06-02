@@ -1,6 +1,6 @@
 import { Heart, Phone, Mail, MapPin, Facebook, Instagram } from 'lucide-react';
 
-export default function Footer({ onAdminClick }: { onAdminClick?: () => void }) {
+export default function Footer() {
   return (
     <footer className="bg-slate-900 text-slate-300">
       <div className="max-w-6xl mx-auto px-5 pt-16 pb-8">
@@ -103,13 +103,7 @@ export default function Footer({ onAdminClick }: { onAdminClick?: () => void }) 
             <div className="flex items-center gap-1">
               Built with
               <Heart size={12} className="text-rose-400 fill-rose-400 mx-0.5" />
-              community support · © 2024{' '}
-              <button 
-                onClick={onAdminClick}
-                className="hover:text-amber-400 transition-colors cursor-default"
-              >
-                Aashiyan
-              </button>
+              community support · © 2024 Aashiyan
             </div>
           </div>
         </div>

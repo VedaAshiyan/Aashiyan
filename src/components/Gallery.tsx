@@ -1,5 +1,3 @@
-import { useEffect, useState } from 'react';
-import { supabase } from '../lib/supabase';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
 export interface GalleryPhoto {
@@ -119,27 +117,9 @@ const momentPhotos: GalleryPhoto[] = [
 ];
 
 export default function Gallery() {
-  const [photos, setPhotos] = useState<GalleryPhoto[]>([]);
-  const displayPhotos = [...momentPhotos, ...photos];
-  const [loading, setLoading] = useState(true);
+  const displayPhotos = momentPhotos;
   const { ref, visible } = useScrollReveal();
 
-  useEffect(() => {
-    fetchPhotos();
-  }, []);
-
-  async function fetchPhotos() {
-    setLoading(true);
-    const { data, error } = await supabase
-      .from('gallery')
-      .select('*')
-      .order('created_at', { ascending: false });
-
-    if (!error && data) {
-      setPhotos(data);
-    }
-    setLoading(false);
-  }
   return (
     <section id="gallery" className="relative overflow-hidden py-24 px-5 bg-gradient-to-b from-amber-50 via-white to-sky-50">
       <div className="relative max-w-6xl mx-auto">
@@ -161,21 +141,12 @@ export default function Gallery() {
           </p>
         </div>
 
-        {/* Loading */}
-        {loading && (
-          <div className="flex justify-center py-16">
-            <div className="w-8 h-8 border-2 border-rose-300 border-t-transparent rounded-full animate-spin" />
-          </div>
-        )}
-
         {/* Masonry-style grid */}
-        {!loading && displayPhotos.length > 0 && (
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-5 md:gap-6">
-            {displayPhotos.map((p, i) => (
-              <GalleryItem key={p.id} photo={p} delay={i * 100} />
-            ))}
-          </div>
-        )}
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-5 md:gap-6">
+          {displayPhotos.map((p, i) => (
+            <GalleryItem key={p.id} photo={p} delay={i * 100} />
+          ))}
+        </div>
 
         {/* Quote below gallery */}
         <div className="mt-16 bg-white/90 backdrop-blur-sm rounded-3xl shadow-lg shadow-amber-100/60 border border-white px-8 py-8 text-center max-w-2xl mx-auto">

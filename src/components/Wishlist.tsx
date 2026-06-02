@@ -1,11 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
-import { Check, Trash2, Smartphone } from 'lucide-react';
-import { supabase } from '../lib/supabase';
+import { Check, Smartphone } from 'lucide-react';
 import {
   type WishItem,
   DEFAULT_WISHLIST_ITEMS,
-  fetchWishlistItems,
   buildItemDonationWhatsAppLink,
 } from '../lib/wishlistData';
 
@@ -14,7 +12,6 @@ interface WishlistItemCardProps {
   index: number;
   isSelected: boolean;
   onToggleSelection: (itemId: string) => void;
-  onDelete: (itemId: string) => void;
 }
 
 function WishlistItemCard({
@@ -22,7 +19,6 @@ function WishlistItemCard({
   index,
   isSelected,
   onToggleSelection,
-  onDelete,
 }: WishlistItemCardProps) {
   const { ref: itemRef, visible: itemVisible } = useScrollReveal(0.1);
 
@@ -48,15 +44,6 @@ function WishlistItemCard({
           >
             {isSelected && <Check size={16} className="text-white" />}
           </button>
-          {!item.is_default && (
-            <button
-              onClick={() => onDelete(item.id)}
-              className="w-6 h-6 rounded-lg hover:bg-red-100 flex items-center justify-center transition-colors"
-              title="Delete item"
-            >
-              <Trash2 size={14} className="text-red-500" />
-            </button>
-          )}
         </div>
       </div>
 
@@ -68,38 +55,8 @@ function WishlistItemCard({
 }
 
 export default function Wishlist() {
-  const [items, setItems] = useState<WishItem[]>([]);
   const [selectedItems, setSelectedItems] = useState<Set<string>>(new Set());
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    fetchItems();
-  }, []);
-
-  const fetchItems = async () => {
-    try {
-      setItems(await fetchWishlistItems());
-    } catch (error) {
-      console.error('Error fetching items:', error);
-      setItems(DEFAULT_WISHLIST_ITEMS);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const deleteItem = async (itemId: string) => {
-    if (!confirm('Are you sure you want to delete this item?')) return;
-
-    try {
-      const { error } = await supabase.from('wishlist_items').delete().eq('id', itemId);
-
-      if (error) throw error;
-      await fetchItems();
-    } catch (error) {
-      console.error('Error deleting item:', error);
-      alert('Failed to delete item');
-    }
-  };
+  const items = DEFAULT_WISHLIST_ITEMS;
 
   const toggleSelection = (itemId: string) => {
     setSelectedItems((prev) => {
@@ -121,16 +78,6 @@ export default function Wishlist() {
     }
     window.open(whatsAppHref, '_blank', 'noopener,noreferrer');
   };
-
-  if (loading) {
-    return (
-      <section className="py-24 px-5 bg-white">
-        <div className="max-w-6xl mx-auto text-center">
-          <p className="text-slate-500">Loading wishlist...</p>
-        </div>
-      </section>
-    );
-  }
 
   return (
     <section className="py-24 px-5 bg-white">
@@ -158,7 +105,6 @@ export default function Wishlist() {
               index={i}
               isSelected={selectedItems.has(item.id)}
               onToggleSelection={toggleSelection}
-              onDelete={deleteItem}
             />
           ))}
         </div>

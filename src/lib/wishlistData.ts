@@ -1,5 +1,3 @@
-import { supabase } from './supabase';
-
 export interface WishItem {
   id: string;
   name: string;
@@ -74,17 +72,6 @@ export const DEFAULT_WISHLIST_ITEMS: WishItem[] = [
     bg_color: 'bg-red-50',
   },
 ];
-
-export async function fetchWishlistItems(): Promise<WishItem[]> {
-  const { data, error } = await supabase
-    .from('wishlist_items')
-    .select('*')
-    .order('is_default', { ascending: false })
-    .order('created_at');
-
-  if (error) throw error;
-  return data?.length ? data : DEFAULT_WISHLIST_ITEMS;
-}
 
 export const WHATSAPP_NUMBER = '919886262255';
 

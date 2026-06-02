@@ -7,7 +7,6 @@ import WhatWeDoDetail from './components/WhatWeDoDetail';
 
 import Gallery from './components/Gallery';
 
-import Admin from './components/Admin';
 import Blog from './components/Blog';
 import Impact from './components/Impact';
 import Partners from './components/Partners';
@@ -22,7 +21,6 @@ import type { ServiceType } from './components/WhatWeDoDetail';
 
 export default function App() {
   const [selectedService, setSelectedService] = useState<ServiceType | null>(null);
-  const [showAdmin, setShowAdmin] = useState(false);
   const [returnToWhatWeDo, setReturnToWhatWeDo] = useState(false);
 
   useEffect(() => {
@@ -47,10 +45,6 @@ export default function App() {
     }
   }, [selectedService, returnToWhatWeDo]);
 
-  if (showAdmin) {
-    return <Admin onExit={() => setShowAdmin(false)} />;
-  }
-
   if (selectedService) {
     return (
       <div className="min-h-screen font-sans antialiased">
@@ -63,7 +57,7 @@ export default function App() {
           }}
         />
         <CtaStrip />
-        <Footer onAdminClick={() => setShowAdmin(true)} />
+        <Footer />
       </div>
     );
   }
@@ -84,7 +78,7 @@ export default function App() {
       <Donate />
 
       <CtaStrip />
-      <Footer onAdminClick={() => setShowAdmin(true)} />
+      <Footer />
 </div>
   );
 }

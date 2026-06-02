@@ -1,9 +1,7 @@
 import { useEffect, useState } from 'react';
-import { supabase } from '../lib/supabase';
 import { useScrollReveal } from '../hooks/useScrollReveal';
-import { Calendar, User, ArrowRight, PenLine, BookOpen } from 'lucide-react';
+import { Calendar, User, ArrowRight, BookOpen } from 'lucide-react';
 import BlogDetail from './BlogDetail';
-import BlogForm from './BlogForm';
 
 export interface BlogPost {
   id: string;
@@ -18,7 +16,7 @@ export interface BlogPost {
   updated_at: string;
 }
 
-type View = 'list' | 'detail' | 'create';
+type View = 'list' | 'detail';
 
 function scrollToStoriesSection() {
   window.requestAnimationFrame(() => {
@@ -229,58 +227,29 @@ Because education is not just about classrooms. It is about continuity, belongin
 ];
 
 export default function Blog() {
-  const [blogs, setBlogs] = useState<BlogPost[]>([]);
-  const [loading, setLoading] = useState(true);
   const [view, setView] = useState<View>('list');
   const [selectedBlog, setSelectedBlog] = useState<BlogPost | null>(null);
   const { ref, visible } = useScrollReveal();
-  const displayStories = [...seededStories, ...blogs];
+  const displayStories = seededStories;
 
   useEffect(() => {
-    fetchBlogs();
-  }, []);
-
-  useEffect(() => {
-    if (view === 'detail' || view === 'create') {
+    if (view === 'detail') {
       scrollToStoriesSection();
     }
   }, [view, selectedBlog?.id]);
-
-  async function fetchBlogs() {
-    setLoading(true);
-    const { data, error } = await supabase
-      .from('blogs')
-      .select('*')
-      .eq('published', true)
-      .order('created_at', { ascending: false });
-
-    if (!error && data) {
-      setBlogs(data);
-    }
-    setLoading(false);
-  }
 
   function openDetail(blog: BlogPost) {
     setSelectedBlog(blog);
     setView('detail');
   }
 
-  function openCreate() {
-    setView('create');
-  }
-
   function goBack() {
     setView('list');
     setSelectedBlog(null);
-    fetchBlogs();
   }
 
   if (view === 'detail' && selectedBlog) {
     return <BlogDetail blog={selectedBlog} onBack={goBack} />;
-  }
-
-  if (view === 'create') {
-    return <BlogForm onBack={goBack} />;
   }
 
   return (
@@ -300,56 +269,16 @@ export default function Blog() {
             Stories and Blogs of Aashiyan
           </h2>
           <p className="text-slate-500 text-base max-w-lg mx-auto leading-relaxed">
-            Add and read moments from the children, teachers, volunteers, and community around Aashiyan.
+            Read moments from the children, teachers, volunteers, and community around Aashiyan.
           </p>
         </div>
 
-        {/* Create button */}
-        <div className="flex justify-end mb-8">
-          <button
-            onClick={openCreate}
-            className="flex items-center gap-2 bg-amber-400 hover:bg-amber-500 text-white font-bold text-sm px-6 py-3 rounded-full transition-all hover:shadow-md hover:-translate-y-0.5"
-          >
-            <PenLine size={16} />
-            Add a Story
-          </button>
-        </div>
-
-        {/* Loading */}
-        {loading && (
-          <div className="flex justify-center py-16">
-            <div className="w-8 h-8 border-3 border-amber-300 border-t-transparent rounded-full animate-spin" />
-          </div>
-        )}
-
-        {/* Empty state */}
-        {!loading && displayStories.length === 0 && (
-          <div className="text-center py-16">
-            <div className="w-16 h-16 bg-sky-50 rounded-full flex items-center justify-center mx-auto mb-5">
-              <BookOpen size={28} className="text-sky-400" />
-            </div>
-            <h3 className="font-display text-xl font-bold text-slate-700 mb-2">No stories yet</h3>
-            <p className="text-slate-500 text-sm max-w-sm mx-auto mb-6">
-              Be the first to share a moment from Aashiyan. Every story matters.
-            </p>
-            <button
-              onClick={openCreate}
-              className="inline-flex items-center gap-2 bg-amber-400 hover:bg-amber-500 text-white font-bold text-sm px-6 py-3 rounded-full transition-all hover:shadow-md"
-            >
-              <PenLine size={16} />
-              Add the First Story
-            </button>
-          </div>
-        )}
-
         {/* Blog grid */}
-        {!loading && displayStories.length > 0 && (
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {displayStories.map((blog, i) => (
-              <BlogCard key={blog.id} blog={blog} index={i} onClick={() => openDetail(blog)} />
-            ))}
-          </div>
-        )}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {displayStories.map((blog, i) => (
+            <BlogCard key={blog.id} blog={blog} index={i} onClick={() => openDetail(blog)} />
+          ))}
+        </div>
       </div>
     </section>
   );
