@@ -5,9 +5,9 @@ import { Users, UtensilsCrossed, Shield, Globe } from 'lucide-react';
 const stats = [
   {
     icon: Users,
-    value: 340,
+    value: 55,
     suffix: '+',
-    label: 'Children Supported',
+    label: 'Kids',
     description: 'Across 3 locations in the city',
     color: 'text-sky-500',
     bg: 'bg-sky-50',
@@ -15,9 +15,9 @@ const stats = [
   },
   {
     icon: UtensilsCrossed,
-    value: 85000,
-    suffix: '+',
-    label: 'Meals Served',
+    value: 400,
+    suffix: '',
+    label: 'Meals',
     description: 'Hot, nutritious meals every day',
     color: 'text-amber-500',
     bg: 'bg-amber-50',
@@ -35,9 +35,9 @@ const stats = [
   },
   {
     icon: Globe,
-    value: 120,
+    value: 30,
     suffix: '+',
-    label: 'Community Volunteers',
+    label: 'Volunteers and Supporters',
     description: 'Neighbours who show up with love',
     color: 'text-rose-500',
     bg: 'bg-rose-50',
@@ -126,19 +126,48 @@ export default function Impact() {
           ))}
         </div>
 
-        {/* Bottom strip */}
-        <div className="mt-14 rounded-3xl overflow-hidden relative">
-          <img
-            src="https://images.pexels.com/photos/8612927/pexels-photo-8612927.jpeg?auto=compress&cs=tinysrgb&w=1400"
-            alt="Children at Aashiyan"
-            className="w-full h-52 sm:h-64 object-cover object-top"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-sky-900/80 via-sky-900/50 to-transparent flex items-center">
-            <div className="px-10 max-w-sm">
-              <p className="font-display text-xl text-white italic leading-relaxed mb-3">
-                "Every child at Aashiyan is proof that kindness changes everything."
+        {/* Founder Section */}
+        <div className="mt-20 overflow-hidden rounded-[2rem] bg-[#F7F3EF] border border-slate-100 shadow-sm">
+          <div className="grid lg:grid-cols-[1.15fr_0.85fr] min-h-[520px]">
+            <div className="p-8 sm:p-12 lg:p-16 flex flex-col justify-center">
+              <div className="inline-flex w-fit rounded-full bg-white px-4 py-1.5 text-sky-600 text-xs font-bold mb-7 tracking-widest uppercase">
+                A Message From Our Founder
+              </div>
+              <h3 className="font-display text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 leading-[0.95] mb-6 uppercase">
+                Safe Space.
+                <span className="block">Bright Futures.</span>
+                <span className="block">Every Child.</span>
+              </h3>
+              <p className="max-w-xl text-slate-700 text-base sm:text-lg leading-relaxed mb-8">
+                Years ago, I dreamt of creating a safe and happy space for children of migrant
+                workers; a place where they could learn, play, laugh, feel heard, and simply be
+                children.
               </p>
-              <span className="text-sky-200 text-sm font-semibold">— Our community</span>
+              <p className="max-w-xl text-slate-600 text-base leading-relaxed mb-8">
+                What began with one room, one teacher, a few children, and a lot of hope has grown
+                through consistency, trust, and the kindness of people who believed in the dream.
+              </p>
+              <div className="space-y-3">
+                <div className="font-display text-2xl font-bold text-slate-900">
+                  Vedaprana Purkayastha
+                </div>
+                <div className="text-slate-700 font-bold text-sm tracking-wide uppercase">
+                  Founder & Visionary
+                </div>
+                <div className="text-slate-500 text-sm font-medium">
+                  M.A. Psychology | M.Sc. Statistics | B.Ed
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-sky-500 p-8 sm:p-10 lg:p-12 flex items-center justify-center">
+              <div className="w-full max-w-sm overflow-hidden rounded-2xl bg-slate-100 shadow-xl border border-sky-400">
+                <img
+                  src="/founder-vedaprana-clean.png"
+                  alt="Vedaprana Purkayastha - Founder"
+                  className="w-full aspect-[4/5] object-cover object-center"
+                />
+              </div>
             </div>
           </div>
         </div>

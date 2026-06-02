@@ -43,7 +43,11 @@ export default function BlogForm({ onBack }: { onBack: () => void }) {
     });
 
     if (insertError) {
-      setError(insertError.message);
+      setError(
+        insertError.message.includes('row-level security')
+          ? 'Story uploads are not enabled yet. Please ask the site admin to apply the latest Supabase migration.'
+          : insertError.message
+      );
       setPublishing(false);
       return;
     }
@@ -52,7 +56,7 @@ export default function BlogForm({ onBack }: { onBack: () => void }) {
   }
 
   return (
-    <section className="py-24 px-5 bg-[#FAFAF8] min-h-screen">
+    <section id="blog" className="py-24 px-5 bg-[#FAFAF8] min-h-screen">
       <div className="max-w-3xl mx-auto">
         {/* Back */}
         <button
@@ -60,7 +64,7 @@ export default function BlogForm({ onBack }: { onBack: () => void }) {
           className="flex items-center gap-2 text-slate-500 hover:text-amber-500 text-sm font-semibold mb-8 transition-colors"
         >
           <ArrowLeft size={16} />
-          Back to blog
+          Back to stories
         </button>
 
         <h1 className="font-display text-3xl sm:text-4xl font-bold text-slate-800 leading-snug mb-2">
@@ -99,7 +103,7 @@ export default function BlogForm({ onBack }: { onBack: () => void }) {
           <div>
             <label className="text-slate-700 text-sm font-bold mb-2 block flex items-center gap-2">
               <Image size={14} />
-              Cover Image URL
+              Story Image URL
             </label>
             <input
               type="url"
@@ -128,7 +132,7 @@ export default function BlogForm({ onBack }: { onBack: () => void }) {
             <textarea
               value={excerpt}
               onChange={(e) => setExcerpt(e.target.value)}
-              placeholder="A brief preview that appears on the blog card..."
+              placeholder="A brief preview that appears on the story card..."
               rows={2}
               className="w-full border-2 border-slate-200 focus:border-amber-400 rounded-xl px-4 py-3 text-slate-700 outline-none transition-colors placeholder:text-slate-300 resize-none text-sm"
             />

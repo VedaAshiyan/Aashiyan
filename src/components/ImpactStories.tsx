@@ -32,6 +32,8 @@ const stories = [
   },
 ];
 
+type ImpactStory = (typeof stories)[number];
+
 export default function ImpactStories() {
   const { ref, visible } = useScrollReveal();
 
@@ -58,49 +60,50 @@ export default function ImpactStories() {
 
         {/* Stories grid */}
         <div className="grid sm:grid-cols-2 gap-8">
-          {stories.map((s, i) => {
-            const { ref: storyRef, visible: storyVisible } = useScrollReveal(0.1);
-            return (
-              <div
-                key={s.name}
-                ref={storyRef}
-                style={{ transitionDelay: `${i * 100}ms` }}
-                className={`group transition-all duration-700 hover:-translate-y-1 ${
-                  storyVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                }`}
-              >
-                <div className="bg-slate-50 rounded-3xl p-8 border border-slate-100 hover:border-sky-200 hover:shadow-lg transition-all">
-                  {/* Quote icon */}
-                  <Quote size={32} className="text-sky-200 mb-4" />
-
-                  {/* Story text */}
-                  <p className="text-slate-600 text-base leading-relaxed mb-6 italic">"{s.story}"</p>
-
-                  {/* Child info */}
-                  <div className="flex items-center gap-4">
-                    <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-sky-100 flex-shrink-0 bg-gradient-to-br from-sky-200 to-amber-200 flex items-center justify-center">
-                      <img
-                        src={s.image}
-                        alt={s.name}
-                        className="w-full h-full object-cover"
-                        onError={(e) => {
-                          (e.target as HTMLImageElement).style.display = 'none';
-                          (e.target as HTMLImageElement).parentElement!.innerHTML =
-                            '<span class="text-2xl text-sky-600 font-bold">👧</span>';
-                        }}
-                      />
-                    </div>
-                    <div>
-                      <h3 className="font-display font-bold text-slate-800">{s.name}</h3>
-                      <p className="text-slate-500 text-sm">Age {s.age}</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
+          {stories.map((story, i) => (
+            <ImpactStoryCard key={story.name} story={story} index={i} />
+          ))}
         </div>
       </div>
     </section>
+  );
+}
+
+function ImpactStoryCard({ story, index }: { story: ImpactStory; index: number }) {
+  const { ref, visible } = useScrollReveal(0.1);
+
+  return (
+    <div
+      ref={ref}
+      style={{ transitionDelay: `${index * 100}ms` }}
+      className={`group transition-all duration-700 hover:-translate-y-1 ${
+        visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+      }`}
+    >
+      <div className="bg-slate-50 rounded-3xl p-8 border border-slate-100 hover:border-sky-200 hover:shadow-lg transition-all">
+        <Quote size={32} className="text-sky-200 mb-4" />
+
+        <p className="text-slate-600 text-base leading-relaxed mb-6 italic">"{story.story}"</p>
+
+        <div className="flex items-center gap-4">
+          <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-sky-100 flex-shrink-0 bg-gradient-to-br from-sky-200 to-amber-200 flex items-center justify-center">
+            <img
+              src={story.image}
+              alt={story.name}
+              className="w-full h-full object-cover"
+              onError={(e) => {
+                (e.target as HTMLImageElement).style.display = 'none';
+                (e.target as HTMLImageElement).parentElement!.innerHTML =
+                  '<span class="text-2xl text-sky-600 font-bold">👧</span>';
+              }}
+            />
+          </div>
+          <div>
+            <h3 className="font-display font-bold text-slate-800">{story.name}</h3>
+            <p className="text-slate-500 text-sm">Age {story.age}</p>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }

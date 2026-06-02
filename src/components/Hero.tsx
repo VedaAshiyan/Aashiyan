@@ -1,47 +1,60 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
+
+const slides = [
+  {
+    src: '/hero-aashiyan-crafts.png',
+    alt: 'Children at Aashiyan holding handmade craft work',
+    position: 'object-center',
+  },
+  {
+    src: '/hero-girls-portrait.png',
+    alt: 'Two children smiling at Aashiyan',
+    position: 'object-[center_25%]',
+  },
+];
 
 export default function Hero() {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const slides = ['/hero-1.png', '/hero-2.png'];
 
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
     }, 5000);
+
     return () => clearInterval(timer);
   }, []);
 
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden px-5 pt-32 pb-24"
     >
-      {/* Background image slider */}
+      {/* Background image */}
       <div className="absolute inset-0">
         {slides.map((slide, index) => (
           <img
-            key={slide}
-            src={slide}
-            alt={`Aashiyan Hero Slide ${index + 1}`}
-            className={`absolute inset-0 w-full h-full object-cover object-top sm:object-[center_25%] transition-opacity duration-1000 ${
+            key={slide.src}
+            src={slide.src}
+            alt={slide.alt}
+            className={`absolute inset-0 w-full h-full object-cover ${slide.position} transition-opacity duration-1000 ${
               index === currentSlide ? 'opacity-100' : 'opacity-0'
             }`}
           />
         ))}
         {/* Warm gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-sky-900/70 via-slate-800/60 to-amber-900/50" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-br from-sky-950/70 via-slate-900/55 to-amber-950/45" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-black/15" />
       </div>
 
       {/* Content */}
-      <div className="relative z-10 text-center px-5 max-w-4xl mx-auto">
+      <div className="relative z-10 text-center w-full max-w-5xl mx-auto">
         {/* Pill badge */}
-        <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm border border-white/25 text-white/90 text-xs font-semibold px-4 py-2 rounded-full mb-8 animate-fade-in-up">
+        <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm border border-white/25 text-white/90 text-xs sm:text-sm font-semibold px-4 py-2 rounded-full mb-7 animate-fade-in-up">
           <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
           Community School &amp; Daycare for Migrant Children
         </div>
 
-        <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6 animate-fade-in-up animate-delay-100">
+        <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.05] mb-7 animate-fade-in-up animate-delay-100">
           A Safe Space to<br />
           <span className="text-amber-300 font-black">Learn, Grow</span>
           <br />
@@ -55,25 +68,17 @@ export default function Hero() {
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up animate-delay-300">
           <a
-            href="https://wa.me/919886262255?text=Namaste%20Aashiyan!%20I%20would%20like%20to%20support%20your%20cause.%20Please%20guide%20me%20on%20how%20I%20can%20donate."
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/#donate"
             className="bg-amber-400 hover:bg-amber-500 text-white font-bold text-base px-8 py-4 rounded-full transition-all hover:shadow-xl hover:-translate-y-1 shadow-lg text-center"
           >
             Donate Now
           </a>
           <a
-            href="#volunteer"
+            href="/#getinvolved"
             className="bg-white/15 hover:bg-white/25 backdrop-blur-sm border-2 border-white/40 hover:border-white/60 text-white font-bold text-base px-8 py-4 rounded-full transition-all hover:-translate-y-1"
           >
             Volunteer With Us
           </a>
-        </div>
-
-        {/* Scroll nudge */}
-        <div className="mt-16 flex flex-col items-center gap-2 animate-fade-in-up animate-delay-500">
-          <span className="text-white/50 text-xs font-medium tracking-widest uppercase">Scroll to explore</span>
-          <div className="w-px h-10 bg-gradient-to-b from-white/40 to-transparent" />
         </div>
       </div>
 

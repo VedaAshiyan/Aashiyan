@@ -6,7 +6,7 @@ const links = [
   { label: 'What We Do', href: '#whatwedo' },
   { label: 'Gallery', href: '#gallery' },
   { label: 'Impact', href: '#impact' },
-  { label: 'Blog', href: '#blog' },
+  { label: 'Stories', href: '#blog' },
   { label: 'Get Involved', href: '#getinvolved' },
 ];
 
@@ -23,21 +23,21 @@ export default function Navbar() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-white/95 backdrop-blur-md shadow-sm py-3' : 'bg-transparent py-5'
+        scrolled ? 'bg-white/95 backdrop-blur-md shadow-sm py-2' : 'bg-transparent py-4'
       }`}
     >
-      <div className="max-w-6xl mx-auto px-5 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 flex items-center justify-between gap-8">
         {/* Logo */}
-        <a href="#" className="flex items-center gap-2 group">
+        <a href="#" className="flex items-center group shrink-0">
           <img
-            src="/aashiyan-logo.svg"
+            src="/aashiyan-logo.png"
             alt="Aashiyan Logo"
-            className="h-12 w-auto group-hover:scale-105 transition-transform"
+            className="h-20 sm:h-24 w-auto group-hover:scale-105 transition-transform object-contain"
           />
         </a>
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center justify-end gap-6 lg:gap-8">
           {links.map((l) => (
             <a
               key={l.href}
@@ -50,10 +50,10 @@ export default function Navbar() {
             </a>
           ))}
           <a
-            href="#donate"
-            className="bg-amber-400 hover:bg-amber-500 text-white text-sm font-bold px-5 py-2.5 rounded-full transition-all hover:shadow-md hover:-translate-y-0.5"
+            href="/#donate"
+            className="bg-amber-400 hover:bg-amber-500 text-white font-bold px-6 py-2.5 rounded-full transition-all hover:shadow-lg hover:-translate-y-0.5"
           >
-            Support Now
+            Donate Now
           </a>
         </nav>
 
@@ -82,11 +82,11 @@ export default function Navbar() {
             </a>
           ))}
           <a
-            href="#donate"
+            href="/#donate"
             onClick={() => setOpen(false)}
-            className="block text-center bg-amber-400 hover:bg-amber-500 text-white font-bold py-3 rounded-full mt-2 transition-colors"
+            className="block w-full text-center bg-amber-400 hover:bg-amber-500 text-white font-bold px-6 py-3 rounded-xl transition-all"
           >
-            Support Now
+            Donate Now
           </a>
         </div>
       )}

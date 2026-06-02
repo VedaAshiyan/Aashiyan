@@ -2,36 +2,22 @@ import { useScrollReveal } from '../hooks/useScrollReveal';
 
 const partners = [
   {
-    name: 'Education First',
-    logo: 'https://images.pexels.com/photos/3769714/pexels-photo-3769714.jpeg?auto=compress&cs=tinysrgb&w=400&h=200&fit=crop',
+    name: 'The She Saga',
+    logo: '/the-she-saga-logo.jpeg',
   },
   {
-    name: 'Child Care Alliance',
-    logo: 'https://images.pexels.com/photos/3769710/pexels-photo-3769710.jpeg?auto=compress&cs=tinysrgb&w=400&h=200&fit=crop',
-  },
-  {
-    name: 'Community Health',
-    logo: 'https://images.pexels.com/photos/3769707/pexels-photo-3769707.jpeg?auto=compress&cs=tinysrgb&w=400&h=200&fit=crop',
-  },
-  {
-    name: 'Hope Foundation',
-    logo: 'https://images.pexels.com/photos/3769711/pexels-photo-3769711.jpeg?auto=compress&cs=tinysrgb&w=400&h=200&fit=crop',
-  },
-  {
-    name: 'Nutrition Partners',
-    logo: 'https://images.pexels.com/photos/3769708/pexels-photo-3769708.jpeg?auto=compress&cs=tinysrgb&w=400&h=200&fit=crop',
-  },
-  {
-    name: 'Youth Empowerment',
-    logo: 'https://images.pexels.com/photos/3769706/pexels-photo-3769706.jpeg?auto=compress&cs=tinysrgb&w=400&h=200&fit=crop',
+    name: "Veda's",
+    logo: '/vedas-logo.jpeg',
   },
 ];
+
+type Partner = (typeof partners)[number];
 
 export default function Partners() {
   const { ref, visible } = useScrollReveal();
 
   return (
-    <section className="py-24 px-5 bg-[#FAFAF8]">
+    <section className="py-24 px-5 bg-slate-50">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div
@@ -51,27 +37,10 @@ export default function Partners() {
           </p>
         </div>
 
-        {/* Logo grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {partners.map((p, i) => {
-            const { ref: itemRef, visible: itemVisible } = useScrollReveal(0.1);
-            return (
-              <div
-                key={p.name}
-                ref={itemRef}
-                style={{ transitionDelay: `${i * 80}ms` }}
-                className={`group bg-white rounded-2xl overflow-hidden border border-slate-100 hover:border-emerald-200 hover:shadow-lg transition-all duration-700 p-6 flex items-center justify-center h-32 ${
-                  itemVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                }`}
-              >
-                <img
-                  src={p.logo}
-                  alt={p.name}
-                  className="max-h-20 max-w-full object-contain group-hover:scale-110 transition-transform duration-300"
-                />
-              </div>
-            );
-          })}
+        <div className="grid sm:grid-cols-2 gap-8 lg:gap-12">
+          {partners.map((partner, i) => (
+            <PartnerCard key={partner.name} partner={partner} index={i} />
+          ))}
         </div>
 
         {/* CTA */}
@@ -88,5 +57,25 @@ export default function Partners() {
         </div>
       </div>
     </section>
+  );
+}
+
+function PartnerCard({ partner, index }: { partner: Partner; index: number }) {
+  const { ref, visible } = useScrollReveal(0.1);
+
+  return (
+    <div
+      ref={ref}
+      style={{ transitionDelay: `${index * 100}ms` }}
+      className={`group bg-white rounded-3xl overflow-hidden border border-slate-100 hover:border-emerald-200 hover:shadow-xl transition-all duration-700 p-8 flex items-center justify-center min-h-[300px] ${
+        visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+      }`}
+    >
+      <img
+        src={partner.logo}
+        alt={partner.name}
+        className="w-full max-w-[85%] max-h-56 object-contain mix-blend-multiply group-hover:scale-110 transition-transform duration-500"
+      />
+    </div>
   );
 }

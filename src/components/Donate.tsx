@@ -1,62 +1,81 @@
 import { useState } from 'react';
 import { Heart, QrCode, Smartphone, ChevronRight } from 'lucide-react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
+import logoGpay from '../assets/payment-logos/logo_gpay.png';
+import logoPhonepe from '../assets/payment-logos/logo_phonepe.png';
+import logoPaytm from '../assets/payment-logos/logo_paytm.png';
+import logoBhim from '../assets/payment-logos/logo_bhim.png';
 
 const UPI_ID = 'UJJBB83981756929@Ujjivan';
 const UPI_NAME = 'Aashiyan NGO';
 const NOTE = 'Donation to Aashiyan NGO';
+const DONATION_QR = '/donation_qr.png';
 
 const amounts = [
-  {  desc: 'School Supplies', icon: '📚' },
-  {  desc: 'Meals for a Child', icon: '🍱' },
-  {  desc: 'Monthly Support', icon: '🌟' },
+  { value: 100, desc: 'School Supplies', icon: '📚' },
+  { value: 300, desc: 'Meals for a Child', icon: '🍱' },
+  { value: 500, desc: 'Monthly Support', icon: '🌟' },
 ];
 
-// Inline SVG logos — always visible, no external dependencies
+// UPI app logos (bundled assets — official brand images)
 const GPay = () => (
-  <svg viewBox="0 0 48 48" className="w-8 h-8">
-    <rect width="48" height="48" rx="10" fill="#fff"/>
-    <text x="50%" y="55%" dominantBaseline="middle" textAnchor="middle" fontSize="11" fontWeight="bold" fontFamily="Arial, sans-serif">
-      <tspan fill="#4285F4">G</tspan><tspan fill="#EA4335"> P</tspan>
-    </text>
-    <text x="50%" y="75%" dominantBaseline="middle" textAnchor="middle" fontSize="8" fontWeight="bold" fontFamily="Arial, sans-serif" fill="#555">Pay</text>
-  </svg>
+  <img
+    src={logoGpay}
+    alt="Google Pay"
+    className="w-full h-full rounded-lg object-contain"
+  />
 );
 
 const PhonePeLogo = () => (
   <img
-    src="/logo_phonepe.png"
+    src={logoPhonepe}
     alt="PhonePe"
-    className="w-8 h-8 rounded-lg object-contain"
+    className="w-full h-full rounded-full object-cover"
   />
 );
 
 const PaytmLogo = () => (
   <img
-    src="/logo_paytm.png"
+    src={logoPaytm}
     alt="Paytm"
-    className="w-8 h-8 rounded-lg object-contain"
+    className="w-full h-full rounded-lg object-contain"
   />
 );
 
 const BhimLogo = () => (
-  <svg viewBox="0 0 48 48" className="w-8 h-8">
-    <rect width="48" height="48" rx="10" fill="#00529C"/>
-    <text x="50%" y="40%" dominantBaseline="middle" textAnchor="middle" fontSize="10" fontWeight="900" fontFamily="Arial, sans-serif" fill="white">BHIM</text>
-    <text x="50%" y="72%" dominantBaseline="middle" textAnchor="middle" fontSize="8" fontWeight="bold" fontFamily="Arial, sans-serif" fill="#FF9900">UPI</text>
-  </svg>
+  <img
+    src={logoBhim}
+    alt="BHIM UPI"
+    className="w-full h-full rounded-lg object-contain"
+  />
 );
 
 const upiApps = [
-  { name: 'Google Pay',  Logo: GPay,        border: 'hover:border-blue-200' },
-  { name: 'PhonePe',    Logo: PhonePeLogo,  border: 'hover:border-purple-200' },
-  { name: 'Paytm',      Logo: PaytmLogo,    border: 'hover:border-sky-200' },
-  { name: 'BHIM',       Logo: BhimLogo,     border: 'hover:border-slate-300' },
+  { name: 'Google Pay', Logo: GPay, border: 'hover:border-blue-200', scheme: 'tez://upi/pay' },
+  { name: 'PhonePe', Logo: PhonePeLogo, border: 'hover:border-purple-200', scheme: 'phonepe://pay' },
+  { name: 'Paytm', Logo: PaytmLogo, border: 'hover:border-sky-200', scheme: 'paytmmp://pay' },
+  { name: 'BHIM', Logo: BhimLogo, border: 'hover:border-slate-300', scheme: 'bhim://pay' },
 ];
 
-// Universal UPI deep link — works with ALL UPI apps
+function buildUpiQuery(amount: number) {
+  const params = new URLSearchParams({
+    pa: UPI_ID,
+    pn: UPI_NAME,
+    cu: 'INR',
+    tn: NOTE,
+  });
+  if (amount > 0) params.set('am', String(amount));
+  return params.toString();
+}
+
+/** Opens the chosen UPI app with the Ujjivan Pay merchant ID pre-filled */
+function buildAppUpiLink(scheme: string, amount: number) {
+  return `${scheme}?${buildUpiQuery(amount)}`;
+}
+
+/** Universal fallback — same scanner / VPA as the standee QR */
 function buildUpiLink(amount: number) {
-  return `upi://pay?pa=${UPI_ID}&pn=${encodeURIComponent(UPI_NAME)}&am=${amount}&cu=INR&tn=${encodeURIComponent(NOTE)}`;
+  return `upi://pay?${buildUpiQuery(amount)}`;
 }
 
 export default function Donate() {
@@ -107,9 +126,8 @@ export default function Donate() {
                       : 'border-slate-200 hover:border-amber-300 hover:bg-amber-50/50'
                   }`}
                 >
-                  <span className="text-2xl mb-1">{a.icon}</span>
-                  <span className="font-bold text-slate-800 text-sm">{a.label}</span>
-                  <span className="text-slate-500 text-xs mt-0.5 text-center leading-tight">{a.desc}</span>
+                  <span className="text-2xl mb-2">{a.icon}</span>
+                  <span className="font-bold text-slate-800 text-sm text-center leading-tight">{a.desc}</span>
                 </button>
               ))}
             </div>
@@ -134,16 +152,16 @@ export default function Donate() {
             {finalAmount > 0 && (
               <div className="bg-amber-50 border border-amber-200 rounded-2xl px-5 py-4 mb-5">
                 <div className="text-amber-700 text-sm font-semibold">
-                  You are donating{' '}
-                  <span className="text-amber-600 font-bold text-base">₹{finalAmount}</span>{' '}
-                  to Aashiyan NGO
+                  You are donating to Aashiyan NGO
                 </div>
                 <div className="text-amber-600 text-xs mt-0.5">100% reaches the children</div>
               </div>
             )}
 
             <a
-              href={`https://wa.me/919886262255?text=Namaste%20Aashiyan!%20I%20would%20like%20to%20support%20your%20cause%20with%20a%20donation%20of%20₹${finalAmount}.%20Please%20guide%20me%20on%20how%20to%20proceed.`}
+              href={`https://wa.me/919886262255?text=${encodeURIComponent(
+                `Namaste Aashiyan! I would like to support your cause with a donation of ₹${finalAmount}. Please guide me on how to proceed.`
+              )}`}
               target="_blank"
               rel="noopener noreferrer"
               className="w-full flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba59] text-white font-bold py-4 rounded-2xl transition-all hover:shadow-lg"
@@ -170,14 +188,14 @@ export default function Donate() {
               Open your preferred UPI app and donate instantly.
             </p>
 
-            <div className="grid grid-cols-2 gap-3 mb-6">
+            <div className="grid grid-cols-2 gap-3 mb-5">
               {upiApps.map((app) => (
                 <a
                   key={app.name}
-                  href={buildUpiLink(finalAmount || 100)}
+                  href={buildAppUpiLink(app.scheme, finalAmount || 100)}
                   className={`bg-white border-2 border-slate-200 ${app.border} rounded-2xl px-4 py-4 flex items-center gap-3 transition-all hover:-translate-y-0.5 hover:shadow-md cursor-pointer`}
                 >
-                  <div className="w-9 h-9 shrink-0 flex items-center justify-center">
+                  <div className="w-10 h-10 shrink-0 flex items-center justify-center overflow-hidden">
                     <app.Logo />
                   </div>
                   <span className="text-slate-700 font-semibold text-sm">{app.name}</span>
@@ -185,6 +203,30 @@ export default function Donate() {
                 </a>
               ))}
             </div>
+
+            {/* Ujjivan Pay scanner — same QR as physical standee */}
+            <button
+              type="button"
+              onClick={() => setShowQR(true)}
+              className="w-full mb-5 rounded-2xl border-2 border-dashed border-sky-200 bg-sky-50/50 p-4 text-left transition-all hover:border-sky-300 hover:bg-sky-50"
+            >
+              <p className="text-sky-800 text-xs font-bold uppercase tracking-wider mb-3">
+                Ujjivan Pay scanner
+              </p>
+              <div className="flex items-center gap-4">
+                <img
+                  src={DONATION_QR}
+                  alt="Ujjivan Pay UPI QR — scan with any UPI app"
+                  className="w-20 h-20 rounded-lg bg-white p-1 shadow-sm"
+                />
+                <div>
+                  <p className="text-slate-700 text-sm font-semibold leading-snug">
+                    Scan &amp; pay using any UPI app
+                  </p>
+                  <p className="text-slate-500 text-xs mt-1 font-mono break-all">{UPI_ID}</p>
+                </div>
+              </div>
+            </button>
 
             <div className="bg-sky-50 rounded-2xl px-5 py-4">
               <div className="text-sky-800 text-xs font-semibold mb-1">UPI ID</div>
@@ -214,21 +256,17 @@ export default function Donate() {
               <div className="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <QrCode size={22} className="text-amber-600" />
               </div>
-              <h3 className="font-display font-bold text-slate-800 text-xl mb-1">Scan to Donate</h3>
+              <h3 className="font-display font-bold text-slate-800 text-xl mb-1">Ujjivan Pay — Scan to Donate</h3>
               <p className="text-slate-500 text-sm mb-5">
-                Scan with any UPI app (Paytm, GPay, PhonePe, BHIM)
+                Same scanner as our standee. Works with Paytm, GPay, PhonePe, BHIM &amp; all UPI apps.
               </p>
 
-              {/* Dynamically generated UPI QR code — scannable with any UPI app */}
-              <a
-                href={`upi://pay?pa=${UPI_ID}&pn=${UPI_NAME}&am=${finalAmount}&cu=INR&tn=${NOTE}`}
-                className="block"
-              >
+              <a href={buildUpiLink(finalAmount || 100)} className="block">
                 <div className="bg-slate-50 rounded-2xl p-4 inline-block mb-4 shadow-inner hover:shadow-md transition-shadow cursor-pointer">
                   <img
-                    src={`https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=${encodeURIComponent(`upi://pay?pa=${UPI_ID}&pn=${UPI_NAME}&cu=INR&tn=${NOTE}`)}&bgcolor=ffffff&color=1a1a2e&margin=12&format=png`}
+                    src={DONATION_QR}
                     alt="Ujjivan Pay UPI QR Code"
-                    className="w-52 h-52 rounded-xl"
+                    className="w-52 h-52 rounded-xl object-contain bg-white"
                   />
                 </div>
               </a>
@@ -236,7 +274,11 @@ export default function Donate() {
               <p className="text-slate-400 text-xs mb-1">
                 UPI ID: <span className="font-mono font-semibold text-slate-600">{UPI_ID}</span>
               </p>
-              <p className="text-slate-400 text-[10px] mb-5">Tap QR to open in UPI app on mobile</p>
+              <p className="text-slate-400 text-[10px] mb-5">
+                {finalAmount > 0
+                  ? `Tap QR on mobile to pay ₹${finalAmount}, or enter amount after scanning`
+                  : 'Scan with any UPI app, or tap QR on mobile to open payment'}
+              </p>
 
               <button
                 onClick={() => setShowQR(false)}

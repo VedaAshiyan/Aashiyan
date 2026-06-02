@@ -46,7 +46,7 @@ Teachers are trained to be patient, nurturing, and responsive to each child's un
     bgColor: 'bg-sky-50',
     iconBg: 'bg-sky-100',
     iconColor: 'text-sky-600',
-    coverImage: 'https://images.pexels.com/photos/8612988/pexels-photo-8612988.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    coverImage: '/education-cover.png',
   },
   daycare: {
     title: 'Day Care',
@@ -76,7 +76,7 @@ Our caregivers understand early childhood development and create an environment 
     bgColor: 'bg-amber-50',
     iconBg: 'bg-amber-100',
     iconColor: 'text-amber-600',
-    coverImage: 'https://images.pexels.com/photos/8613014/pexels-photo-8613014.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    coverImage: '/daycare-children-hd.jpeg',
   },
   nutrition: {
     title: 'Nutrition',
@@ -110,7 +110,7 @@ Our nutrition program ensures:
     bgColor: 'bg-emerald-50',
     iconBg: 'bg-emerald-100',
     iconColor: 'text-emerald-600',
-    coverImage: 'https://images.pexels.com/photos/8612952/pexels-photo-8612952.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    coverImage: '/nutrition-children.jpeg',
   },
   wellbeing: {
     title: 'Mental & Physical Well-being',
@@ -147,7 +147,7 @@ Every child is seen as a whole person, not just a student.`,
     bgColor: 'bg-rose-50',
     iconBg: 'bg-rose-100',
     iconColor: 'text-rose-600',
-    coverImage: 'https://images.pexels.com/photos/8535230/pexels-photo-8535230.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    coverImage: '/wellbeing-cover.png',
   },
 };
 
@@ -162,12 +162,13 @@ export default function WhatWeDoDetail({
   const Icon = details.icon;
 
   return (
-    <section className="bg-[#FAFAF8] py-24 px-5 min-h-screen">
+    <section className="bg-[#FAFAF8] pt-40 sm:pt-44 pb-24 px-5 min-h-screen">
       <div className="max-w-4xl mx-auto">
         {/* Back button */}
         <button
+          type="button"
           onClick={onBack}
-          className="flex items-center gap-2 text-slate-500 hover:text-sky-600 text-sm font-semibold mb-8 transition-colors"
+          className="relative z-10 inline-flex items-center gap-2 bg-white text-slate-600 hover:text-sky-700 hover:bg-sky-50 text-sm font-bold px-5 py-3 rounded-full shadow-sm border border-slate-200 mb-8 transition-all"
         >
           <ArrowLeft size={16} />
           Back to What We Do
@@ -178,7 +179,7 @@ export default function WhatWeDoDetail({
           <img
             src={details.coverImage}
             alt={details.title}
-            className="w-full h-72 sm:h-96 object-cover"
+            className="w-full h-96 sm:h-[560px] object-cover object-[center_50%]"
           />
         </div>
 
@@ -205,21 +206,24 @@ export default function WhatWeDoDetail({
         </div>
 
         {/* Main content */}
-        <div className="bg-white rounded-3xl shadow-sm border border-slate-100 p-8 mb-10">
-          <div className="prose-custom space-y-5">
+        <div className="bg-white rounded-3xl shadow-sm border border-slate-100 px-7 py-8 sm:px-10 sm:py-10 mb-10">
+          <div className="space-y-5 font-sans">
             {details.fullDesc.split('\n').map((paragraph, i) => {
               if (!paragraph.trim()) return null;
 
               if (paragraph.startsWith('- ')) {
                 return (
-                  <li key={i} className="text-slate-600 text-base leading-relaxed ml-5">
-                    {paragraph.replace('- ', '')}
-                  </li>
+                  <div key={i} className="flex items-start gap-3 pl-2">
+                    <CheckCircle size={17} className={`${details.iconColor} mt-1 flex-shrink-0`} />
+                    <p className="text-slate-700 text-base sm:text-lg font-medium leading-relaxed">
+                      {paragraph.replace('- ', '')}
+                    </p>
+                  </div>
                 );
               }
 
               return (
-                <p key={i} className="text-slate-600 text-base leading-relaxed">
+                <p key={i} className="text-slate-700 text-base sm:text-lg font-medium leading-relaxed">
                   {paragraph}
                 </p>
               );
@@ -229,40 +233,30 @@ export default function WhatWeDoDetail({
 
         {/* Highlights */}
         <div className="mb-10">
-          <h2 className="font-display text-2xl font-bold text-slate-800 mb-6">What We Provide</h2>
+          <h2 className="font-sans text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mb-6">
+            What We Provide
+          </h2>
           <div className="grid sm:grid-cols-2 gap-4">
             {details.highlights.map((h, i) => (
               <div
                 key={i}
-                className={`${details.bgColor} rounded-2xl px-6 py-4 flex items-start gap-3 border border-slate-100`}
+                className={`${details.bgColor} rounded-2xl px-6 py-5 flex items-center gap-4 border border-white shadow-sm`}
               >
-                <CheckCircle size={20} className={`${details.iconColor} flex-shrink-0 mt-0.5`} />
-                <span className="text-slate-700 font-semibold text-sm">{h}</span>
+                <CheckCircle size={22} className={`${details.iconColor} flex-shrink-0`} />
+                <span className="font-sans text-slate-800 font-semibold text-base leading-snug">
+                  {h}
+                </span>
               </div>
             ))}
           </div>
         </div>
 
         {/* Impact section */}
-        <div className={`${details.bgColor} rounded-3xl border-l-4 border-sky-400 px-8 py-6`}>
-          <h3 className="font-display text-xl font-bold text-slate-800 mb-3">The Impact</h3>
-          <p className="text-slate-700 text-base leading-relaxed">{details.impact}</p>
-        </div>
-
-        {/* CTA */}
-        <div className="mt-10 flex gap-4">
-          <a
-            href="#getinvolved"
-            className="flex-1 bg-amber-400 hover:bg-amber-500 text-white font-bold text-center px-6 py-4 rounded-2xl transition-all hover:shadow-lg hover:-translate-y-0.5"
-          >
-            Get Involved
-          </a>
-          <a
-            href="#donate"
-            className="flex-1 bg-sky-100 hover:bg-sky-200 text-sky-700 font-bold text-center px-6 py-4 rounded-2xl transition-colors"
-          >
-            Support This Program
-          </a>
+        <div className={`${details.bgColor} rounded-3xl border-l-4 border-sky-400 px-8 py-7 shadow-sm`}>
+          <h3 className="font-sans text-2xl font-extrabold text-slate-900 tracking-tight mb-4">
+            The Impact
+          </h3>
+          <p className="font-sans text-slate-700 text-lg leading-relaxed">{details.impact}</p>
         </div>
       </div>
     </section>

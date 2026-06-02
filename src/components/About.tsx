@@ -7,33 +7,22 @@ export default function About() {
     <section id="about" className="py-24 px-5 bg-[#FAFAF8]">
       <div
         ref={ref}
-        className={`max-w-6xl mx-auto transition-all duration-700 ${
-          visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-        }`}
+        className={`max-w-6xl mx-auto transition-all duration-700 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`}
       >
         <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
-          {/* Image side */}
           <div className="relative">
-            <div className="rounded-3xl overflow-hidden shadow-xl">
-              <img
-                src="https://images.pexels.com/photos/8613089/pexels-photo-8613089.jpeg?auto=compress&cs=tinysrgb&w=900"
-                alt="Children at Aashiyan classroom"
-                className="w-full h-80 md:h-96 object-cover"
-              />
-            </div>
-            {/* Floating card */}
-            <div className="absolute -bottom-6 -right-4 md:-right-8 bg-white rounded-2xl shadow-lg px-5 py-4 max-w-[200px]">
-              <div className="text-3xl font-display font-bold text-amber-500 leading-none">2021</div>
-              <div className="text-slate-500 text-xs font-semibold mt-1 leading-snug">Founded on the belief that every child deserves an equal childhood</div>
-            </div>
-            {/* Decorative blob */}
-            <div className="absolute -top-6 -left-6 w-24 h-24 rounded-full bg-sky-100 -z-10" />
+            <img
+              src="/about-community-school.png"
+              alt="Aashiyan community school and daycare overview"
+              className="w-full rounded-3xl shadow-xl shadow-slate-200/70 border border-white object-cover"
+            />
           </div>
 
           {/* Text side */}
           <div>
             <div className="inline-block bg-amber-50 text-amber-600 text-xs font-bold px-4 py-1.5 rounded-full mb-5 tracking-widest uppercase">
-              Our Story
+              About Us
             </div>
 
             <h2 className="font-display text-3xl sm:text-4xl font-bold text-slate-800 leading-snug mb-6">

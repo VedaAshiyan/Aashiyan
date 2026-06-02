@@ -1,6 +1,14 @@
 import { ArrowLeft, Calendar, User, BookOpen } from 'lucide-react';
 import type { BlogPost } from './Blog';
 
+function getBlogImagePositionClass(imageUrl: string) {
+  return imageUrl.includes('menstrual-awareness-girls')
+    || imageUrl.includes('story-girl-hd')
+    || imageUrl.includes('migrant-workers-stairs')
+    ? 'object-top'
+    : 'object-center';
+}
+
 export default function BlogDetail({
   blog,
   onBack,
@@ -16,7 +24,7 @@ export default function BlogDetail({
   });
 
   return (
-    <section className="py-24 px-5 bg-[#FAFAF8] min-h-screen">
+    <section id="blog" className="py-24 px-5 bg-[#FAFAF8] min-h-screen">
       <div className="max-w-3xl mx-auto">
         {/* Back button */}
         <button
@@ -33,7 +41,7 @@ export default function BlogDetail({
             <img
               src={blog.cover_image_url}
               alt={blog.title}
-              className="w-full h-64 sm:h-80 object-cover"
+              className={`w-full h-64 sm:h-80 object-cover ${getBlogImagePositionClass(blog.cover_image_url)}`}
             />
           </div>
         ) : (
