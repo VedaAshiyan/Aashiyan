@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 
 const links = [
@@ -11,47 +11,34 @@ const links = [
 ];
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
-  useEffect(() => {
-    const handler = () => setScrolled(window.scrollY > 30);
-    window.addEventListener('scroll', handler, { passive: true });
-    return () => window.removeEventListener('scroll', handler);
-  }, []);
-
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-white/95 backdrop-blur-md shadow-sm py-2' : 'bg-transparent py-4'
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-5 sm:px-8 flex items-center justify-between gap-8">
+    <header className="fixed left-0 right-0 top-0 z-50 border-b border-slate-100 bg-white shadow-sm">
+      <div className="mx-auto flex h-[92px] max-w-7xl items-center justify-between gap-8 px-5 sm:px-8 lg:h-[88px]">
         {/* Logo */}
         <a href="#" className="flex items-center group shrink-0">
           <img
             src="/aashiyan-logo.png"
             alt="Aashiyan Logo"
-            className="h-20 sm:h-24 w-auto group-hover:scale-105 transition-transform object-contain"
+            className="h-16 w-auto object-contain transition-transform group-hover:scale-105 sm:h-[72px] lg:h-20"
           />
         </a>
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex items-center justify-end gap-6 lg:gap-8">
+        <nav className="hidden items-center justify-end gap-6 md:flex lg:gap-8">
           {links.map((l) => (
             <a
               key={l.href}
               href={l.href}
-              className={`text-sm font-semibold transition-colors hover:text-amber-500 ${
-                scrolled ? 'text-slate-600' : 'text-white/90'
-              }`}
+              className="text-[15px] font-bold text-slate-800 transition-colors hover:text-amber-500"
             >
               {l.label}
             </a>
           ))}
           <a
             href="/#donate"
-            className="bg-amber-400 hover:bg-amber-500 text-white font-bold px-6 py-2.5 rounded-full transition-all hover:shadow-lg hover:-translate-y-0.5"
+            className="rounded-lg bg-[#c96757] px-6 py-3 text-[15px] font-black uppercase tracking-wide text-white transition-all hover:-translate-y-0.5 hover:bg-[#b95a4b] hover:shadow-lg"
           >
             Donate Now
           </a>
@@ -60,9 +47,8 @@ export default function Navbar() {
         {/* Mobile hamburger */}
         <button
           onClick={() => setOpen(!open)}
-          className={`md:hidden p-2 rounded-lg transition-colors ${
-            scrolled ? 'text-slate-700 hover:bg-slate-100' : 'text-white hover:bg-white/20'
-          }`}
+          className="rounded-lg p-2 text-slate-800 transition-colors hover:bg-slate-100 md:hidden"
+          aria-label="Toggle navigation menu"
         >
           {open ? <X size={22} /> : <Menu size={22} />}
         </button>
@@ -70,7 +56,7 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="md:hidden bg-white shadow-lg border-t border-slate-100 px-5 py-4 space-y-3">
+        <div className="space-y-3 border-t border-slate-100 bg-white px-5 py-4 shadow-lg md:hidden">
           {links.map((l) => (
             <a
               key={l.href}
@@ -84,7 +70,7 @@ export default function Navbar() {
           <a
             href="/#donate"
             onClick={() => setOpen(false)}
-            className="block w-full text-center bg-amber-400 hover:bg-amber-500 text-white font-bold px-6 py-3 rounded-xl transition-all"
+            className="block w-full rounded-lg bg-[#c96757] px-6 py-3 text-center font-black uppercase tracking-wide text-white transition-all hover:bg-[#b95a4b]"
           >
             Donate Now
           </a>

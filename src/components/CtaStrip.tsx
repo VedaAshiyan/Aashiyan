@@ -1,3 +1,5 @@
+import { GOOGLE_FORM_URL } from '../lib/contactLinks';
+
 export default function CtaStrip() {
   return (
     <section className="bg-gradient-to-r from-sky-600 to-sky-500 py-12 px-5">
@@ -14,7 +16,7 @@ export default function CtaStrip() {
             Donate Now
           </a>
           <a
-            href="https://forms.gle/tBPUmEThuZL424766"
+            href={GOOGLE_FORM_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center bg-white/15 hover:bg-white/25 backdrop-blur-sm border-2 border-white/40 text-white font-bold text-base px-8 py-3.5 rounded-full transition-all hover:-translate-y-0.5"

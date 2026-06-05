@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { Heart, BookOpen, Briefcase, QrCode, Smartphone } from 'lucide-react';
+import { buildUpiLink, DONATION_QR, UPI_ID } from '../lib/paymentLinks';
 
 type ModalView = 'volunteer' | 'internship' | 'donate' | null;
 type InvolvedCardData = {
@@ -410,19 +411,23 @@ function DonateForm() {
   const [selectedAmount, setSelectedAmount] = useState(300);
   const [customAmount, setCustomAmount] = useState('');
   const [showQR, setShowQR] = useState(false);
+  const [copiedUpi, setCopiedUpi] = useState(false);
 
   const finalAmount = customAmount ? parseInt(customAmount) || 0 : selectedAmount;
+  const payableAmount = finalAmount || 100;
+  const upiLink = buildUpiLink(payableAmount);
+
+  async function copyUpiId() {
+    await navigator.clipboard.writeText(UPI_ID);
+    setCopiedUpi(true);
+    window.setTimeout(() => setCopiedUpi(false), 1800);
+  }
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
     if (donationType === 'funds') {
-      window.open(
-        `https://wa.me/919886262255?text=${encodeURIComponent(
-          `Namaste Aashiyan! I would like to support your cause with a donation of ₹${finalAmount}. Please guide me on how to proceed.`
-        )}`,
-        '_blank'
-      );
+      setShowQR(true);
     } else {
       // Format donation type for message
       const typeMap: Record<string, string> = {
@@ -517,10 +522,10 @@ function DonateForm() {
           <button
             type="button"
             onClick={() => setShowQR(true)}
-            className="w-full flex items-center justify-center gap-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-3 rounded-xl transition-all"
+            className="w-full flex items-center justify-center gap-2 bg-amber-400 hover:bg-amber-500 text-white font-bold py-3 rounded-xl transition-all"
           >
             <QrCode size={16} />
-            Show QR Code Instead
+            Scan QR to Pay
           </button>
         </div>
       )}
@@ -528,7 +533,7 @@ function DonateForm() {
       <div className="bg-sky-50 border border-sky-200 rounded-xl px-4 py-3">
         <p className="text-sky-700 text-sm leading-relaxed">
           {donationType === 'funds' 
-            ? <>For monetary donations, choose an amount and donate via <strong>WhatsApp</strong>, or use the QR code option above.</>
+            ? <>For monetary donations, choose an amount and scan the <strong>UPI QR code</strong>. You can message us after payment if you need help.</>
             : <>For item donations, click the button below to <strong>Enquire on WhatsApp</strong> about current requirements and quantity.</>
           }
         </p>
@@ -546,8 +551,8 @@ function DonateForm() {
       >
         {donationType === 'funds' ? (
           <>
-            <Smartphone size={18} />
-            Donate Now via WhatsApp
+            <QrCode size={18} />
+            Scan QR to Pay
           </>
         ) : (
           <>
@@ -559,11 +564,11 @@ function DonateForm() {
 
       {showQR && (
         <div
-          className="fixed inset-0 z-[60] flex items-center justify-center bg-black/50 backdrop-blur-sm px-5"
+          className="fixed inset-0 z-[60] flex items-center justify-center overflow-y-auto bg-black/50 px-5 py-6 backdrop-blur-sm"
           onClick={() => setShowQR(false)}
         >
           <div
-            className="bg-white rounded-3xl p-8 max-w-sm w-full shadow-2xl text-center"
+            className="max-h-[92vh] w-full max-w-md overflow-y-auto rounded-3xl bg-white p-6 text-center shadow-2xl sm:p-8"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -573,16 +578,39 @@ function DonateForm() {
             <p className="text-slate-500 text-sm mb-5">
               Scan with Paytm, GPay, PhonePe, BHIM, or any UPI app.
             </p>
-            <div className="bg-slate-50 rounded-2xl p-4 inline-block mb-4 shadow-inner">
-              <img
-                src="/donation_qr.png"
-                alt="Aashiyan donation QR code"
-                className="w-52 h-52 rounded-xl object-contain bg-white"
-              />
-            </div>
-            <p className="text-slate-400 text-xs mb-5">
-              After payment, you can message us on WhatsApp with the donation details.
+            <a
+              href={upiLink}
+              className="block"
+              aria-label={`Open UPI payment for ₹${payableAmount}`}
+            >
+              <div className="mb-4 inline-block rounded-2xl bg-slate-50 p-3 shadow-inner transition-shadow hover:shadow-md">
+                <img
+                  src={DONATION_QR}
+                  alt="Aashiyan donation QR code"
+                  className="max-h-[58vh] w-full rounded-xl bg-white object-contain"
+                />
+              </div>
+            </a>
+            <p className="text-slate-400 text-xs mb-1">
+              UPI ID: <span className="font-mono font-semibold text-slate-600">{UPI_ID}</span>
             </p>
+            <p className="text-slate-400 text-[10px] mb-5">
+              Scan with any UPI app and enter the amount, or tap Open UPI App on mobile to pay ₹{payableAmount}.
+            </p>
+            <a
+              href={upiLink}
+              className="mb-3 flex w-full items-center justify-center gap-2 rounded-2xl bg-emerald-500 py-3 font-bold text-white transition-colors hover:bg-emerald-600"
+            >
+              <Smartphone size={18} />
+              Open UPI App
+            </a>
+            <button
+              type="button"
+              onClick={copyUpiId}
+              className="mb-3 w-full rounded-2xl bg-amber-100 py-3 font-bold text-amber-800 transition-colors hover:bg-amber-200"
+            >
+              {copiedUpi ? 'UPI ID Copied' : 'Copy UPI ID'}
+            </button>
             <button
               type="button"
               onClick={() => setShowQR(false)}

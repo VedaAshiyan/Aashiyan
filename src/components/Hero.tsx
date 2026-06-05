@@ -2,14 +2,14 @@ import { useEffect, useState } from 'react';
 
 const slides = [
   {
-    src: '/hero-aashiyan-crafts.png',
-    alt: 'Children at Aashiyan holding handmade craft work',
-    position: 'object-center',
+    src: '/hero-girls-portrait.png',
+    alt: 'Two girls from Aashiyan standing together',
+    imageClass: 'object-cover object-[center_16%] lg:object-[center_18%]',
   },
   {
-    src: '/hero-girls-portrait.png',
-    alt: 'Two children smiling at Aashiyan',
-    position: 'object-[center_25%]',
+    src: '/hero-aashiyan-crafts.png',
+    alt: 'Children at Aashiyan holding handmade paper craft',
+    imageClass: 'object-contain object-center bg-white',
   },
 ];
 
@@ -17,76 +17,83 @@ export default function Hero() {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    const timer = window.setInterval(() => {
+      setCurrentSlide((current) => (current + 1) % slides.length);
     }, 5000);
 
-    return () => clearInterval(timer);
+    return () => window.clearInterval(timer);
   }, []);
 
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden px-5 pt-32 pb-24"
+      className="relative mt-[92px] overflow-hidden bg-[#F7F8FA] px-5 py-14 lg:mt-[88px] lg:min-h-[calc(100vh-88px)] lg:py-0"
     >
-      {/* Background image */}
-      <div className="absolute inset-0">
-        {slides.map((slide, index) => (
-          <img
-            key={slide.src}
-            src={slide.src}
-            alt={slide.alt}
-            className={`absolute inset-0 w-full h-full object-cover ${slide.position} transition-opacity duration-1000 ${
-              index === currentSlide ? 'opacity-100' : 'opacity-0'
-            }`}
-          />
-        ))}
-        {/* Warm gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-sky-950/70 via-slate-900/55 to-amber-950/45" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-black/15" />
-      </div>
+      <div className="mx-auto grid max-w-7xl items-center gap-10 lg:min-h-[calc(100vh-88px)] lg:grid-cols-[0.92fr_1.08fr] lg:gap-16">
+        <div className="relative z-10 max-w-xl pt-4 text-center sm:text-left lg:pt-0">
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-sky-50 px-4 py-2 text-xs font-black uppercase tracking-widest text-sky-700 ring-1 ring-sky-100">
+            <span className="h-2 w-2 rounded-full bg-amber-400" />
+            Community School &amp; Daycare
+          </div>
 
-      {/* Content */}
-      <div className="relative z-10 text-center w-full max-w-5xl mx-auto">
-        {/* Pill badge */}
-        <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm border border-white/25 text-white/90 text-xs sm:text-sm font-semibold px-4 py-2 rounded-full mb-7 animate-fade-in-up">
-          <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
-          Community School &amp; Daycare for Migrant Children
+          <h1 className="font-display mb-6 text-5xl font-bold leading-[0.98] tracking-normal text-slate-950 sm:text-6xl md:text-7xl lg:text-[5.2rem] xl:text-[6rem]">
+            A Safe Space to
+            <br />
+            <span className="font-black text-amber-400">Learn, Grow</span>
+            <br />
+            &amp; Dream
+          </h1>
+
+          <p className="mx-auto mb-8 max-w-lg text-base font-semibold leading-relaxed text-slate-600 sm:mx-0 sm:text-lg">
+            Supporting children of migrant workers with education, meals, care, and community,
+            because every child deserves a warm place to belong.
+          </p>
+
+          <div className="flex flex-col gap-3 sm:flex-row">
+            <a
+              href="/#donate"
+              className="inline-flex items-center justify-center rounded-full bg-amber-400 px-8 py-4 text-base font-black text-white shadow-lg transition-all hover:-translate-y-0.5 hover:bg-amber-500 hover:shadow-xl"
+            >
+              Donate Now
+            </a>
+            <a
+              href="/#getinvolved"
+              className="inline-flex items-center justify-center rounded-full border-2 border-slate-200 bg-white px-8 py-4 text-base font-black text-slate-800 shadow-sm transition-all hover:-translate-y-0.5 hover:border-sky-200 hover:text-sky-700 hover:shadow-md"
+            >
+              Volunteer With Us
+            </a>
+          </div>
         </div>
 
-        <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.05] mb-7 animate-fade-in-up animate-delay-100">
-          A Safe Space to<br />
-          <span className="text-amber-300 font-black">Learn, Grow</span>
-          <br />
-          &amp; Dream
-        </h1>
-
-        <p className="text-white/85 text-lg sm:text-xl font-light leading-relaxed max-w-2xl mx-auto mb-10 animate-fade-in-up animate-delay-200">
-          Supporting the children of migrant workers with education, meals,
-          care, and community — because every child deserves a warm place to belong.
-        </p>
-
-        <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up animate-delay-300">
-          <a
-            href="/#donate"
-            className="bg-amber-400 hover:bg-amber-500 text-white font-bold text-base px-8 py-4 rounded-full transition-all hover:shadow-xl hover:-translate-y-1 shadow-lg text-center"
-          >
-            Donate Now
-          </a>
-          <a
-            href="/#getinvolved"
-            className="bg-white/15 hover:bg-white/25 backdrop-blur-sm border-2 border-white/40 hover:border-white/60 text-white font-bold text-base px-8 py-4 rounded-full transition-all hover:-translate-y-1"
-          >
-            Volunteer With Us
-          </a>
+        <div className="relative min-h-[380px] lg:min-h-[calc(100vh-88px)]">
+          <div className="absolute -inset-y-14 left-8 right-[-25vw] hidden bg-gradient-to-r from-[#F7F8FA] via-white/80 to-transparent lg:block" />
+          <div className="relative h-[420px] w-full overflow-hidden rounded-[2rem] shadow-2xl shadow-slate-300/60 sm:h-[520px] lg:h-[calc(100vh-88px)] lg:rounded-none lg:shadow-none">
+            {slides.map((slide, index) => (
+              <img
+                key={slide.src}
+                src={slide.src}
+                alt={slide.alt}
+                className={`absolute inset-0 h-full w-full transition-opacity duration-700 ${slide.imageClass} ${
+                  index === currentSlide ? 'opacity-100' : 'opacity-0'
+                }`}
+              />
+            ))}
+          </div>
+          <div className="pointer-events-none absolute inset-0 rounded-[2rem] bg-gradient-to-r from-[#F7F8FA] via-transparent to-transparent lg:rounded-none" />
+          <div className="absolute bottom-5 left-1/2 z-10 flex -translate-x-1/2 gap-2">
+            {slides.map((slide, index) => (
+              <button
+                key={slide.src}
+                type="button"
+                onClick={() => setCurrentSlide(index)}
+                aria-label={`Show hero slide ${index + 1}`}
+                className={`h-2.5 rounded-full transition-all ${
+                  index === currentSlide ? 'w-8 bg-amber-400' : 'w-2.5 bg-white/75'
+                }`}
+              />
+            ))}
+          </div>
         </div>
-      </div>
-
-      {/* Bottom wave */}
-      <div className="absolute bottom-0 left-0 right-0">
-        <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full">
-          <path d="M0 80L60 69.3C120 58.7 240 37.3 360 32C480 26.7 600 37.3 720 42.7C840 48 960 48 1080 42.7C1200 37.3 1320 26.7 1380 21.3L1440 16V80H1380C1320 80 1200 80 1080 80C960 80 840 80 720 80C600 80 480 80 360 80C240 80 120 80 60 80H0Z" fill="#FAFAF8"/>
-        </svg>
       </div>
     </section>
   );

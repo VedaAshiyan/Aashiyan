@@ -1,4 +1,5 @@
 import { useScrollReveal } from '../hooks/useScrollReveal';
+import { GOOGLE_FORM_URL } from '../lib/contactLinks';
 
 const partners = [
   {
@@ -15,6 +16,11 @@ type Partner = (typeof partners)[number];
 
 export default function Partners() {
   const { ref, visible } = useScrollReveal();
+
+  function openGoogleForm(event: React.MouseEvent<HTMLAnchorElement>) {
+    event.preventDefault();
+    window.open(GOOGLE_FORM_URL, '_blank', 'noopener,noreferrer');
+  }
 
   return (
     <section className="py-24 px-5 bg-slate-50">
@@ -49,8 +55,11 @@ export default function Partners() {
             Interested in partnering with Aashiyan? We'd love to hear from you!
           </p>
           <a
-            href="mailto:partners@aashiyan.org"
-            className="inline-flex bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-8 py-3.5 rounded-full transition-all hover:shadow-lg hover:-translate-y-0.5"
+            href={GOOGLE_FORM_URL}
+            onClick={openGoogleForm}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-8 py-3.5 rounded-full transition-all hover:shadow-lg hover:-translate-y-0.5"
           >
             Get in Touch
           </a>
