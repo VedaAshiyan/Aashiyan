@@ -44,7 +44,7 @@ export default function Hero() {
         ))}
         <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/10 to-black/35" />
 
-        <div className="relative z-10 flex min-h-[calc(100svh-84px)] flex-col justify-start px-5 pt-[6.25rem] sm:min-h-[calc(100svh-92px)] sm:px-6 sm:pt-[7rem]">
+        <div className="relative z-10 flex min-h-[calc(100svh-84px)] flex-col justify-start px-5 pt-[24rem] sm:min-h-[calc(100svh-92px)] sm:px-6 sm:pt-[25rem]">
           <h1 className="font-display max-w-none text-[clamp(1.95rem,9vw,3rem)] font-bold leading-[0.98] tracking-normal text-white drop-shadow-[0_3px_12px_rgba(0,0,0,0.45)]">
             <span className="whitespace-nowrap">A Safe Space to</span>
             <br />
