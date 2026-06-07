@@ -66,7 +66,7 @@ export default function Hero() {
             </a>
             <a
               href="/#getinvolved"
-              className="inline-flex min-h-12 items-center justify-center rounded-full border-2 border-white/80 bg-white/90 px-7 py-3 text-base font-black text-slate-800 shadow-sm transition-all hover:bg-white"
+              className="inline-flex min-h-12 items-center justify-center rounded-full border-2 border-white/80 bg-white/20 px-7 py-3 text-base font-black text-white shadow-sm transition-all hover:bg-white/30"
             >
               Volunteer With Us
             </a>
