@@ -80,11 +80,11 @@ export default function Footer() {
           <div>
             <h4 className="text-white font-bold text-sm uppercase tracking-widest mb-5">Give Today</h4>
             <p className="text-slate-400 text-sm leading-relaxed mb-4">
-              Your ₹100 provides school supplies for a child. Your ₹300 feeds a child for a month.
+              Your support helps provide learning materials, meals, care, and a safe space for every child at Aashiyan.
             </p>
             <a
               href="/#donate"
-              className="inline-flex items-center gap-2 bg-amber-400 hover:bg-amber-500 text-white font-bold px-8 py-4 rounded-full transition-all hover:shadow-lg"
+              className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full bg-amber-400 px-8 py-4 font-bold text-white transition-all hover:bg-amber-500 hover:shadow-lg sm:w-auto"
             >
               Donate Now
               <span>→</span>
@@ -100,10 +100,24 @@ export default function Footer() {
               <span>80G Certified</span>
               <span>12A Registered</span>
             </div>
-            <div className="flex items-center gap-1">
-              Built with
-              <Heart size={12} className="text-rose-400 fill-rose-400 mx-0.5" />
-              community support · © 2024 Aashiyan
+            <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-center sm:justify-end">
+              <span className="inline-flex items-center gap-1">
+                Built with
+                <Heart size={12} className="text-rose-400 fill-rose-400 mx-0.5" />
+                community support
+              </span>
+              <span>© 2026 Aashiyan</span>
+              <span>
+                Website by{' '}
+                <a
+                  href="https://karaodigital.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-bold text-slate-300 transition-colors hover:text-amber-300"
+                >
+                  Karao.digital
+                </a>
+              </span>
             </div>
           </div>
         </div>

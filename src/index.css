@@ -5,12 +5,20 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    font-family: 'Nunito', sans-serif;
+    font-family: 'DM Sans', sans-serif;
+    overflow-x: hidden;
   }
 
   body {
     background-color: #FAFAF8;
     color: #2D3748;
+    overflow-x: hidden;
+  }
+
+  img,
+  video,
+  iframe {
+    max-width: 100%;
   }
 }
 
@@ -22,6 +30,19 @@
   .text-balance {
     text-wrap: balance;
   }
+}
+
+.body-copy p,
+.body-copy li {
+  color: #334155;
+  font-family: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+  font-weight: 500;
+}
+
+.body-copy p strong,
+.body-copy li strong {
+  color: #0f172a;
+  font-weight: 800;
 }
 
 /* Fade-in animation for scroll-triggered elements */

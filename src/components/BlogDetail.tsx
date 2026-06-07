@@ -24,7 +24,7 @@ export default function BlogDetail({
   });
 
   return (
-    <section id="blog" className="py-24 px-5 bg-[#FAFAF8] min-h-screen">
+    <section id="blog" className="py-12 px-5 bg-[#FAFAF8] min-h-screen">
       <div className="max-w-3xl mx-auto">
         {/* Back button */}
         <button
@@ -70,14 +70,14 @@ export default function BlogDetail({
         {/* Excerpt highlight */}
         {blog.excerpt && (
           <div className="bg-amber-50 border-l-4 border-amber-400 rounded-r-xl px-6 py-4 mb-8">
-            <p className="text-amber-800 text-base italic leading-relaxed font-medium">
+            <p className="text-lg font-bold italic leading-relaxed text-amber-900">
               {blog.excerpt}
             </p>
           </div>
         )}
 
         {/* Content */}
-        <div className="prose-custom text-slate-700 text-base leading-relaxed space-y-5">
+        <div className="prose-custom space-y-6 text-xl font-medium leading-relaxed text-slate-800">
           {blog.content.split('\n').map((paragraph, i) => {
             if (!paragraph.trim()) return null;
 

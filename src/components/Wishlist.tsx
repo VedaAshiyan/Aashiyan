@@ -80,17 +80,17 @@ export default function Wishlist() {
   };
 
   return (
-    <section className="py-24 px-5 bg-white">
+    <section className="py-12 px-5 bg-white">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-14">
-          <div className="inline-block bg-rose-50 text-rose-500 text-xs font-bold px-4 py-1.5 rounded-full mb-5 tracking-widest uppercase">
+        <div className="text-center mb-10">
+          <h2 className="font-display mb-5 text-4xl font-black leading-[0.95] text-slate-900 sm:text-5xl lg:text-6xl">
             Monthly Needs
-          </div>
-          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-slate-800 leading-tight mb-5">
-            Our needs change every month
           </h2>
-          <p className="text-slate-600 text-base sm:text-lg leading-relaxed max-w-3xl mx-auto">
+          <p className="font-display mb-6 text-2xl font-bold leading-[1.05] text-slate-800 sm:text-3xl lg:text-4xl">
+            Our needs change every month
+          </p>
+          <p className="text-slate-600 text-lg sm:text-xl leading-relaxed max-w-4xl mx-auto">
             We may not need every item listed below at all times. Before donating, please message us
             on WhatsApp so we can share what the children need most this month.
           </p>
@@ -128,7 +128,7 @@ export default function Wishlist() {
           <button
             type="button"
             onClick={handleWhatsAppPing}
-            className="inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20ba59] text-white font-bold px-10 py-4 rounded-2xl transition-all hover:shadow-lg hover:-translate-y-0.5"
+            className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-2xl bg-[#25D366] px-10 py-4 font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-[#20ba59] hover:shadow-lg sm:w-auto"
           >
             <Smartphone size={18} />
             Ping us on WhatsApp

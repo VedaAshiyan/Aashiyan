@@ -38,12 +38,12 @@ export default function ImpactStories() {
   const { ref, visible } = useScrollReveal();
 
   return (
-    <section className="py-24 px-5 bg-white">
+    <section className="py-12 px-5 bg-white">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div
           ref={ref}
-          className={`text-center mb-14 transition-all duration-700 ${
+          className={`text-center mb-10 transition-all duration-700 ${
             visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >

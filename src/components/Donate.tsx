@@ -8,9 +8,9 @@ import logoBhim from '../assets/payment-logos/logo_bhim.png';
 import { buildAppUpiLink, buildUpiLink, DONATION_QR, UPI_ID } from '../lib/paymentLinks';
 
 const amounts = [
-  { value: 100, desc: 'School Supplies', icon: '📚' },
-  { value: 300, desc: 'Meals for a Child', icon: '🍱' },
-  { value: 500, desc: 'Monthly Support', icon: '🌟' },
+  { value: 500, desc: 'School Supplies', icon: '📚' },
+  { value: 1000, desc: 'Meals for a Child', icon: '🍱' },
+  { value: 1500, desc: 'Monthly Support', icon: '🌟' },
 ];
 
 // UPI app logos (bundled assets — official brand images)
@@ -55,7 +55,7 @@ const upiApps = [
 
 export default function Donate() {
   const { ref, visible } = useScrollReveal();
-  const [selected, setSelected] = useState(300);
+  const [selected, setSelected] = useState(1000);
   const [custom, setCustom] = useState('');
   const [showQR, setShowQR] = useState(false);
   const [copiedUpi, setCopiedUpi] = useState(false);
@@ -71,40 +71,40 @@ export default function Donate() {
   }
 
   return (
-    <section id="donate" className="py-24 px-5 bg-[#FAFAF8]">
+    <section id="donate" className="py-12 px-5 bg-[#FAFAF8]">
       <div className="max-w-5xl mx-auto">
         <div
           ref={ref}
-          className={`text-center mb-14 transition-all duration-700 ${
+          className={`text-center mb-10 transition-all duration-700 ${
             visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
-          <div className="inline-block bg-rose-50 text-rose-500 text-xs font-bold px-4 py-1.5 rounded-full mb-5 tracking-widest uppercase">
+          <h2 className="font-display mb-5 text-4xl font-black leading-[0.95] text-slate-900 sm:text-5xl lg:text-6xl">
             Donate Now
-          </div>
-          <h2 className="font-display text-3xl sm:text-4xl font-bold text-slate-800 leading-snug mb-4">
-            Give a child their brightest tomorrow
           </h2>
-          <p className="text-slate-500 text-base max-w-lg mx-auto leading-relaxed">
+          <p className="font-display mb-6 text-2xl font-bold leading-[1.05] text-slate-800 sm:text-3xl lg:text-4xl">
+            Give a child their brightest tomorrow
+          </p>
+          <p className="text-slate-500 text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed">
             Your contribution — however small — provides meals, books, safety, and love to a child who needs it most.
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8">
           {/* Left: Amount selection */}
-          <div className="bg-white rounded-3xl shadow-sm border border-slate-100 p-8">
+          <div className="rounded-3xl border border-slate-100 bg-white p-5 shadow-sm sm:p-8">
             <h3 className="font-bold text-slate-800 text-lg mb-6 flex items-center gap-2">
               <Heart size={18} className="text-rose-400 fill-rose-400" />
               Choose your support
             </h3>
 
             {/* Preset amounts */}
-            <div className="grid grid-cols-3 gap-3 mb-5">
+            <div className="mb-5 grid grid-cols-1 gap-3 sm:grid-cols-3">
               {amounts.map((a) => (
                 <button
                   key={a.value}
                   onClick={() => { setSelected(a.value); setCustom(''); }}
-                  className={`flex flex-col items-center p-4 rounded-2xl border-2 transition-all duration-200 cursor-pointer ${
+                  className={`flex min-h-24 cursor-pointer flex-col items-center justify-center rounded-2xl border-2 p-4 transition-all duration-200 ${
                     selected === a.value && !custom
                       ? 'border-amber-400 bg-amber-50 shadow-sm'
                       : 'border-slate-200 hover:border-amber-300 hover:bg-amber-50/50'
@@ -173,12 +173,12 @@ export default function Donate() {
               Open your preferred UPI app and donate instantly.
             </p>
 
-            <div className="grid grid-cols-2 gap-3 mb-5">
+            <div className="mb-5 grid grid-cols-1 gap-3 sm:grid-cols-2">
               {upiApps.map((app) => (
                 <a
                   key={app.name}
                   href={buildAppUpiLink(app.scheme, payableAmount)}
-                  className={`bg-white border-2 border-slate-200 ${app.border} rounded-2xl px-4 py-4 flex items-center gap-3 transition-all hover:-translate-y-0.5 hover:shadow-md cursor-pointer`}
+                  className={`flex min-h-16 cursor-pointer items-center gap-3 rounded-2xl border-2 border-slate-200 bg-white px-4 py-4 transition-all hover:-translate-y-0.5 hover:shadow-md ${app.border}`}
                 >
                   <div className="w-10 h-10 shrink-0 flex items-center justify-center overflow-hidden">
                     <app.Logo />

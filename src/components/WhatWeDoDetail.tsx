@@ -162,7 +162,7 @@ export default function WhatWeDoDetail({
   const Icon = details.icon;
 
   return (
-    <section className="bg-[#FAFAF8] pt-40 sm:pt-44 pb-24 px-5 min-h-screen">
+    <section className="bg-[#FAFAF8] pt-40 sm:pt-44 pb-16 px-5 min-h-screen">
       <div className="max-w-4xl mx-auto">
         {/* Back button */}
         <button

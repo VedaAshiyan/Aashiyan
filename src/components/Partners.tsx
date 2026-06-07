@@ -23,22 +23,19 @@ export default function Partners() {
   }
 
   return (
-    <section className="py-24 px-5 bg-slate-50">
+    <section className="py-12 px-5 bg-slate-50">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div
           ref={ref}
-          className={`text-center mb-14 transition-all duration-700 ${
+          className={`text-center mb-10 transition-all duration-700 ${
             visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
-          <div className="inline-block bg-emerald-50 text-emerald-600 text-xs font-bold px-4 py-1.5 rounded-full mb-5 tracking-widest uppercase">
-            Our Network
-          </div>
-          <h2 className="font-display text-3xl sm:text-4xl font-bold text-slate-800 leading-snug mb-4">
-            Partner & supporters
+          <h2 className="font-display mb-5 text-4xl font-black leading-[0.95] text-slate-900 sm:text-5xl lg:text-6xl">
+            Partners & Supporters
           </h2>
-          <p className="text-slate-500 text-base max-w-lg mx-auto leading-relaxed">
+          <p className="mx-auto max-w-3xl text-xl font-medium leading-relaxed text-slate-800 sm:text-2xl">
             Aashiyan is stronger because of our partners who share our vision for every child.
           </p>
         </div>

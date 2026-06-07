@@ -56,12 +56,12 @@ export default function Services() {
   const { ref, visible } = useScrollReveal();
 
   return (
-    <section id="services" className="py-24 px-5 bg-white">
+    <section id="services" className="py-12 px-5 bg-white">
       <div className="max-w-6xl mx-auto">
         {/* Heading */}
         <div
           ref={ref}
-          className={`text-center mb-16 transition-all duration-700 ${
+          className={`text-center mb-10 transition-all duration-700 ${
             visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >

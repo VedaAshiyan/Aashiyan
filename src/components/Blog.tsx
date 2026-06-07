@@ -132,7 +132,7 @@ At Aashiyan, we believe every girl deserves:
     slug: 'the-girl-who-chose-a-story-over-silence',
     excerpt:
       'A story of Lata, Ruby teacher, and how a single book can become a bridge toward equal childhoods and brighter futures.',
-    cover_image_url: '/story-girl-hd.jpeg',
+    cover_image_url: '/gallery/moment-01.png',
     author_name: 'Meghangee Chakraborty, B.A. Student, Christ University',
     published: true,
     created_at: '2026-05-24T00:00:00.000Z',
@@ -253,22 +253,19 @@ export default function Blog() {
   }
 
   return (
-    <section id="blog" className="py-24 px-5 bg-[#FAFAF8]">
+    <section id="blog" className="py-12 px-5 bg-[#FAFAF8]">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div
           ref={ref}
-          className={`text-center mb-14 transition-all duration-700 ${
+          className={`text-center mb-10 transition-all duration-700 ${
             visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
-          <div className="inline-block bg-sky-50 text-sky-600 text-xs font-bold px-4 py-1.5 rounded-full mb-5 tracking-widest uppercase">
-            Stories
-          </div>
-          <h2 className="font-display text-3xl sm:text-4xl font-bold text-slate-800 leading-snug mb-4">
-            Stories and Blogs of Aashiyan
+          <h2 className="font-display mb-5 text-4xl font-black leading-[0.95] text-slate-900 sm:text-5xl lg:text-6xl">
+            Stories and Blogs
           </h2>
-          <p className="text-slate-500 text-base max-w-lg mx-auto leading-relaxed">
+          <p className="mx-auto max-w-3xl text-xl font-medium leading-relaxed text-slate-800 sm:text-2xl">
             Read moments from the children, teachers, volunteers, and community around Aashiyan.
           </p>
         </div>
@@ -344,7 +341,7 @@ function BlogCard({
 
         {/* Excerpt */}
         {blog.excerpt && (
-          <p className="text-slate-500 text-sm leading-relaxed line-clamp-2 mb-4">
+          <p className="mb-5 line-clamp-3 text-lg font-medium leading-relaxed text-slate-800">
             {blog.excerpt}
           </p>
         )}

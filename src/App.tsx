@@ -47,15 +47,17 @@ export default function App() {
 
   if (selectedService) {
     return (
-      <div className="min-h-screen font-sans antialiased">
+      <div className="min-h-screen overflow-x-hidden font-sans antialiased">
         <Navbar />
-        <WhatWeDoDetail
-          service={selectedService}
-          onBack={() => {
-            setReturnToWhatWeDo(true);
-            setSelectedService(null);
-          }}
-        />
+        <main className="body-copy">
+          <WhatWeDoDetail
+            service={selectedService}
+            onBack={() => {
+              setReturnToWhatWeDo(true);
+              setSelectedService(null);
+            }}
+          />
+        </main>
         <CtaStrip />
         <Footer />
       </div>
@@ -63,19 +65,20 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen font-sans antialiased">
+    <div className="min-h-screen overflow-x-hidden font-sans antialiased">
       <Navbar />
-      <Hero />
-      <About />
-      <GetInvolved />
-      <WhatWeDo onServiceClick={setSelectedService} />
-      <Gallery />
-      <Blog />
-      <Impact />
-      <Wishlist />
-      <Partners />
-
-      <Donate />
+      <main className="body-copy">
+        <Hero />
+        <About />
+        <GetInvolved />
+        <WhatWeDo onServiceClick={setSelectedService} />
+        <Gallery />
+        <Blog />
+        <Impact />
+        <Wishlist />
+        <Donate />
+        <Partners />
+      </main>
 
       <CtaStrip />
       <Footer />

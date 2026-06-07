@@ -43,29 +43,29 @@ export default function GetInvolved() {
       icon: Briefcase,
       title: 'Internship',
       desc: 'Gain meaningful experience in community work',
-      img: '/gallery/moment-09.png',
+      img: '/get-involved-internship.png',
       modal: 'internship' as const,
       button: 'Apply Now',
     },
   ];
 
   return (
-    <section id="getinvolved" className="py-24 px-5 bg-white">
+    <section id="getinvolved" className="py-12 px-5 bg-white">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div
           ref={ref}
-          className={`text-center mb-14 transition-all duration-700 ${
+          className={`text-center mb-10 transition-all duration-700 ${
             visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
-          <div className="inline-block bg-rose-50 text-rose-500 text-xs font-bold px-4 py-1.5 rounded-full mb-5 tracking-widest uppercase">
+          <h2 className="font-display mb-5 text-4xl font-black leading-[0.95] text-slate-900 sm:text-5xl lg:text-6xl">
             Get Involved
-          </div>
-          <h2 className="font-display text-3xl sm:text-4xl font-bold text-slate-800 leading-snug mb-4">
-            Be part of their journey
           </h2>
-          <p className="text-slate-500 text-base max-w-lg mx-auto leading-relaxed">
+          <p className="font-display mb-6 text-2xl font-bold leading-[1.05] text-slate-800 sm:text-3xl lg:text-4xl">
+            Be part of their journey
+          </p>
+          <p className="text-slate-500 text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed">
             Every contribution creates a safer and brighter childhood. Give your time, skills, resources, or ideas.
           </p>
         </div>
@@ -122,7 +122,7 @@ function InvolvedCard({
         alt={card.title}
         className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/55 to-black/20" />
       <div className={`absolute inset-0 flex flex-col justify-end text-white ${isDonate ? 'p-8 lg:p-10' : 'p-5'}`}>
         <div
           className={`bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center mb-3 group-hover:scale-110 transition-transform ${
@@ -131,10 +131,10 @@ function InvolvedCard({
         >
           <Icon size={isDonate ? 24 : 20} className="text-white" />
         </div>
-        <h3 className={`font-display font-bold mb-1 ${isDonate ? 'text-4xl' : 'text-2xl'}`}>
+        <h3 className={`font-display mb-2 font-bold drop-shadow-lg ${isDonate ? 'text-4xl' : 'text-2xl'}`}>
           {card.title}
         </h3>
-        <p className={`text-white/80 mb-4 ${isDonate ? 'text-base max-w-md' : 'text-sm'}`}>
+        <p className={`mb-4 font-bold leading-snug !text-white drop-shadow-md ${isDonate ? 'max-w-md text-lg' : 'text-base'}`}>
           {card.desc}
         </p>
         <span className={`inline-flex font-bold text-amber-300 group-hover:gap-1.5 gap-1 transition-all ${isDonate ? 'text-base' : 'text-sm'}`}>
@@ -347,7 +347,7 @@ function InternshipForm() {
         />
       </div>
 
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
           <label className="text-slate-700 text-sm font-bold mb-2 block">College</label>
           <input
@@ -408,7 +408,7 @@ function DonateForm() {
   const [donationType, setDonationType] = useState('funds');
   const [message, setMessage] = useState('');
   const [submitted, setSubmitted] = useState(false);
-  const [selectedAmount, setSelectedAmount] = useState(300);
+  const [selectedAmount, setSelectedAmount] = useState(1000);
   const [customAmount, setCustomAmount] = useState('');
   const [showQR, setShowQR] = useState(false);
   const [copiedUpi, setCopiedUpi] = useState(false);
@@ -484,8 +484,8 @@ function DonateForm() {
         <div className="space-y-4">
           <div>
             <label className="text-slate-700 text-sm font-bold mb-2 block">Donation Amount</label>
-            <div className="grid grid-cols-3 gap-3">
-              {[100, 300, 500].map((amount) => (
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
+              {[500, 1000, 1500].map((amount) => (
                 <button
                   key={amount}
                   type="button"
@@ -493,7 +493,7 @@ function DonateForm() {
                     setSelectedAmount(amount);
                     setCustomAmount('');
                   }}
-                  className={`rounded-xl border-2 px-4 py-3 font-bold transition-colors ${
+                  className={`min-h-11 rounded-xl border-2 px-4 py-3 font-bold transition-colors ${
                     selectedAmount === amount && !customAmount
                       ? 'border-amber-400 bg-amber-50 text-amber-700'
                       : 'border-slate-200 text-slate-700 hover:border-amber-300'

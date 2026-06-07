@@ -51,22 +51,22 @@ export default function WhatWeDo({ onServiceClick }: { onServiceClick?: (service
   const { ref, visible } = useScrollReveal();
 
   return (
-    <section id="whatwedo" className="py-24 px-5 bg-[#FAFAF8]">
+    <section id="whatwedo" className="py-12 px-5 bg-[#FAFAF8]">
       <div className="max-w-6xl mx-auto">
         {/* Heading */}
         <div
           ref={ref}
-          className={`text-center mb-16 transition-all duration-700 ${
+          className={`text-center mb-10 transition-all duration-700 ${
             visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
-          <div className="inline-block bg-emerald-50 text-emerald-600 text-xs font-bold px-4 py-1.5 rounded-full mb-5 tracking-widest uppercase">
+          <h2 className="font-display mb-5 text-4xl font-black leading-[0.95] text-slate-900 sm:text-5xl lg:text-6xl">
             Our Approach
-          </div>
-          <h2 className="font-display text-3xl sm:text-4xl font-bold text-slate-800 leading-snug mb-4">
-            What We Do
           </h2>
-          <p className="text-slate-500 text-base max-w-lg mx-auto leading-relaxed">
+          <p className="font-display mb-6 text-2xl font-bold leading-[1.05] text-slate-800 sm:text-3xl lg:text-4xl">
+            What We Do
+          </p>
+          <p className="mx-auto max-w-3xl text-xl font-medium leading-relaxed text-slate-800 sm:text-2xl">
             A complete support system designed for the whole child — mind, body, and spirit.
           </p>
         </div>
@@ -121,7 +121,7 @@ function OfferingCard({
           <Icon size={24} className={offering.iconColor} />
         </div>
         <h3 className="text-slate-800 font-bold text-xl mb-3 group-hover:text-slate-900 transition-colors">{offering.title}</h3>
-        <p className="text-slate-600 text-base leading-relaxed mb-4">{offering.desc}</p>
+        <p className="mb-5 text-lg font-medium leading-relaxed text-slate-800">{offering.desc}</p>
         <span className="inline-flex items-center gap-2 text-sky-600 font-semibold text-sm group-hover:gap-3 transition-all">
           Learn More
           <ArrowRight size={16} />

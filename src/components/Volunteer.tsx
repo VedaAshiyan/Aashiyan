@@ -32,7 +32,7 @@ export default function Volunteer() {
   const { ref, visible } = useScrollReveal();
 
   return (
-    <section id="volunteer" className="py-24 px-5 bg-white">
+    <section id="volunteer" className="py-12 px-5 bg-white">
       <div className="max-w-6xl mx-auto">
         <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Left: image */}
@@ -75,7 +75,7 @@ export default function Volunteer() {
               You don't have to be a teacher or a donor to make a difference at Aashiyan. We welcome anyone willing to give their time, skills, materials, or simply their presence. Even one hour a week can change a child's week entirely.
             </p>
 
-            <div className="grid grid-cols-2 gap-4 mb-8">
+            <div className="mb-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
               {ways.map((w) => {
                 const Icon = w.icon;
                 return (

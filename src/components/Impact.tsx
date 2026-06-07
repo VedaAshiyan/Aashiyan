@@ -100,22 +100,22 @@ export default function Impact() {
   const { ref, visible } = useScrollReveal();
 
   return (
-    <section id="impact" className="py-24 px-5 bg-white">
+    <section id="impact" className="py-12 px-5 bg-white">
       <div className="max-w-6xl mx-auto">
         {/* Heading */}
         <div
           ref={ref}
-          className={`text-center mb-14 transition-all duration-700 ${
+          className={`text-center mb-10 transition-all duration-700 ${
             visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
-          <div className="inline-block bg-emerald-50 text-emerald-600 text-xs font-bold px-4 py-1.5 rounded-full mb-5 tracking-widest uppercase">
+          <h2 className="font-display mb-5 text-4xl font-black leading-[0.95] text-slate-900 sm:text-5xl lg:text-6xl">
             Our Impact
-          </div>
-          <h2 className="font-display text-3xl sm:text-4xl font-bold text-slate-800 leading-snug mb-4">
-            Small numbers. Enormous lives.
           </h2>
-          <p className="text-slate-500 text-base max-w-lg mx-auto leading-relaxed">
+          <p className="font-display mb-6 text-2xl font-bold leading-[1.05] text-slate-800 sm:text-3xl lg:text-4xl">
+            Small numbers. Enormous lives.
+          </p>
+          <p className="text-slate-500 text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed">
             Each number below is a child who ate, learned, laughed, and felt safe — because of you.
           </p>
         </div>
@@ -127,23 +127,24 @@ export default function Impact() {
         </div>
 
         {/* Founder Section */}
-        <div className="mt-20 overflow-hidden rounded-[2rem] bg-[#F7F3EF] border border-slate-100 shadow-sm">
+        <div className="mt-12 overflow-hidden rounded-[2rem] bg-[#F7F3EF] border border-slate-100 shadow-sm">
           <div className="grid lg:grid-cols-[1.15fr_0.85fr] min-h-[520px]">
             <div className="p-8 sm:p-12 lg:p-16 flex flex-col justify-center">
-              <div className="inline-flex w-fit rounded-full bg-white px-4 py-1.5 text-sky-600 text-xs font-bold mb-7 tracking-widest uppercase">
-                A Message From Our Founder
-              </div>
-              <h3 className="font-display text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 leading-[0.95] mb-6 uppercase">
+              <h3 className="font-display mb-5 text-4xl font-black leading-[0.95] text-slate-900 sm:text-5xl lg:text-6xl">
+                A Message
+                <span className="block">From Our Founder</span>
+              </h3>
+              <p className="font-display mb-7 text-2xl font-black leading-[1.05] text-slate-800 sm:text-3xl lg:text-4xl">
                 Safe Space.
                 <span className="block">Bright Futures.</span>
                 <span className="block">Every Child.</span>
-              </h3>
-              <p className="max-w-xl text-slate-700 text-base sm:text-lg leading-relaxed mb-8">
+              </p>
+              <p className="mb-7 max-w-2xl text-xl font-medium leading-relaxed text-slate-800 sm:text-2xl">
                 Years ago, I dreamt of creating a safe and happy space for children of migrant
                 workers; a place where they could learn, play, laugh, feel heard, and simply be
                 children.
               </p>
-              <p className="max-w-xl text-slate-600 text-base leading-relaxed mb-8">
+              <p className="mb-8 max-w-2xl text-xl font-medium leading-relaxed text-slate-800 sm:text-2xl">
                 What began with one room, one teacher, a few children, and a lot of hope has grown
                 through consistency, trust, and the kindness of people who believed in the dream.
               </p>

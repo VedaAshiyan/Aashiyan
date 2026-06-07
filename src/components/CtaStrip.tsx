@@ -11,7 +11,7 @@ export default function CtaStrip() {
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a
             href="/#donate"
-            className="inline-flex items-center justify-center bg-amber-400 hover:bg-amber-500 text-white font-bold text-base px-8 py-3.5 rounded-full transition-all hover:shadow-lg hover:-translate-y-0.5"
+            className="inline-flex min-h-11 w-full items-center justify-center rounded-full bg-amber-400 px-8 py-3.5 text-base font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-amber-500 hover:shadow-lg sm:w-auto"
           >
             Donate Now
           </a>
@@ -19,7 +19,7 @@ export default function CtaStrip() {
             href={GOOGLE_FORM_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center bg-white/15 hover:bg-white/25 backdrop-blur-sm border-2 border-white/40 text-white font-bold text-base px-8 py-3.5 rounded-full transition-all hover:-translate-y-0.5"
+            className="inline-flex min-h-11 w-full items-center justify-center rounded-full border-2 border-white/40 bg-white/15 px-8 py-3.5 text-base font-bold text-white backdrop-blur-sm transition-all hover:-translate-y-0.5 hover:bg-white/25 sm:w-auto"
           >
             Contact Us
           </a>

@@ -9,7 +9,7 @@ const slides = [
   {
     src: '/hero-aashiyan-crafts.png',
     alt: 'Children at Aashiyan holding handmade paper craft',
-    imageClass: 'object-contain object-center bg-white',
+    imageClass: 'object-cover object-center',
   },
 ];
 
@@ -27,17 +27,35 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative mt-[92px] overflow-hidden bg-[#F7F8FA] px-5 py-14 lg:mt-[88px] lg:min-h-[calc(100vh-88px)] lg:py-0"
+      className="relative mt-[84px] overflow-hidden bg-[#F7F8FA] sm:mt-[92px] lg:mt-[88px] lg:min-h-[calc(100vh-88px)] lg:px-5 lg:py-0"
     >
-      <div className="mx-auto grid max-w-7xl items-center gap-10 lg:min-h-[calc(100vh-88px)] lg:grid-cols-[0.92fr_1.08fr] lg:gap-16">
+      <div className="relative min-h-[calc(100svh-84px)] overflow-hidden sm:min-h-[calc(100svh-92px)] lg:hidden">
+        <img
+          src={slides[0].src}
+          alt={slides[0].alt}
+          className="absolute inset-0 h-full w-full object-cover object-[center_42%] brightness-110 saturate-125"
+        />
+        <div className="relative z-10 px-5 pt-[10rem] sm:px-6 sm:pt-[11.5rem]">
+          <h1 className="font-display max-w-none text-[clamp(2rem,10vw,3.1rem)] font-bold leading-[0.98] tracking-normal text-white drop-shadow-[0_3px_12px_rgba(0,0,0,0.45)]">
+            <span className="whitespace-nowrap">A Safe Space to</span>
+            <br />
+            <span className="font-black text-amber-300">Learn, Grow</span>
+            <br />
+            &amp; Dream
+          </h1>
+          <div className="mt-5 h-1.5 w-full max-w-[20rem] bg-[#df6f5b]" />
+        </div>
+      </div>
+
+      <div className="mx-auto hidden max-w-7xl items-center gap-10 lg:grid lg:min-h-[calc(100vh-88px)] lg:grid-cols-[0.92fr_1.08fr] lg:gap-16">
         <div className="relative z-10 max-w-xl pt-4 text-center sm:text-left lg:pt-0">
           <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-sky-50 px-4 py-2 text-xs font-black uppercase tracking-widest text-sky-700 ring-1 ring-sky-100">
             <span className="h-2 w-2 rounded-full bg-amber-400" />
             Community School &amp; Daycare
           </div>
 
-          <h1 className="font-display mb-6 text-5xl font-bold leading-[0.98] tracking-normal text-slate-950 sm:text-6xl md:text-7xl lg:text-[5.2rem] xl:text-[6rem]">
-            A Safe Space to
+          <h1 className="font-display mb-6 text-5xl font-bold leading-[0.98] tracking-normal text-slate-950 sm:text-6xl md:text-7xl lg:text-[4.55rem] xl:text-[5.25rem]">
+            <span className="whitespace-nowrap">A Safe Space to</span>
             <br />
             <span className="font-black text-amber-400">Learn, Grow</span>
             <br />
@@ -65,21 +83,20 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="relative min-h-[380px] lg:min-h-[calc(100vh-88px)]">
-          <div className="absolute -inset-y-14 left-8 right-[-25vw] hidden bg-gradient-to-r from-[#F7F8FA] via-white/80 to-transparent lg:block" />
-          <div className="relative h-[420px] w-full overflow-hidden rounded-[2rem] shadow-2xl shadow-slate-300/60 sm:h-[520px] lg:h-[calc(100vh-88px)] lg:rounded-none lg:shadow-none">
+        <div className="relative min-h-[320px] lg:min-h-0">
+          <div className="absolute -inset-y-14 left-8 right-[-25vw] hidden bg-gradient-to-r from-[#F7F8FA] via-white/40 to-transparent lg:block" />
+          <div className="relative aspect-[16/10] w-full overflow-hidden rounded-[2rem] shadow-2xl shadow-slate-300/60 sm:aspect-[16/9] lg:rounded-[2.5rem] lg:shadow-2xl">
             {slides.map((slide, index) => (
               <img
                 key={slide.src}
                 src={slide.src}
                 alt={slide.alt}
-                className={`absolute inset-0 h-full w-full transition-opacity duration-700 ${slide.imageClass} ${
+                className={`absolute inset-0 h-full w-full brightness-105 saturate-110 transition-opacity duration-700 ${slide.imageClass} ${
                   index === currentSlide ? 'opacity-100' : 'opacity-0'
                 }`}
               />
             ))}
           </div>
-          <div className="pointer-events-none absolute inset-0 rounded-[2rem] bg-gradient-to-r from-[#F7F8FA] via-transparent to-transparent lg:rounded-none" />
           <div className="absolute bottom-5 left-1/2 z-10 flex -translate-x-1/2 gap-2">
             {slides.map((slide, index) => (
               <button
