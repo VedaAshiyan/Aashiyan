@@ -53,7 +53,7 @@ export default function Hero() {
             &amp; Dream
           </h1>
           <div className="mt-5 h-1.5 w-full max-w-[20rem] bg-[#df6f5b]" />
-          <p className="mt-5 max-w-[21rem] text-base font-semibold leading-relaxed text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.45)]">
+          <p className="mt-5 max-w-[21rem] rounded-2xl bg-black/35 px-4 py-3 text-base font-bold leading-relaxed text-white shadow-lg backdrop-blur-[2px] drop-shadow-[0_3px_14px_rgba(0,0,0,0.75)]">
             Supporting children of migrant workers with education, meals, care, and community,
             because every child deserves a warm place to belong.
           </p>
