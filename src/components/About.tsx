@@ -11,7 +11,7 @@ export default function About() {
         className={`max-w-6xl mx-auto transition-all duration-700 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
       >
-        <div className="grid items-start gap-10 md:grid-cols-2 lg:gap-16">
+        <div className="grid items-start gap-7 md:grid-cols-2 lg:gap-10">
           <div className="relative">
             <img
               src="/about-community-school.png"
@@ -37,14 +37,14 @@ export default function About() {
 
             </p>
 
-            <p className="mb-8 max-w-2xl text-xl font-medium leading-relaxed text-slate-700 sm:text-2xl">
+            <p className="mb-4 max-w-2xl text-xl font-medium leading-relaxed text-slate-700 sm:text-2xl">
               Aashiyan was created to give these children a space to sit, learn, and belong. Along with basic education, we focus on discipline, life skills, confidence, and creating a nurturing environment where every child feels seen and valued.
 
 
             </p>
           </div>
 
-          <div className="grid gap-5 md:col-span-2 md:grid-cols-2">
+          <div className="grid gap-5 md:col-span-2 md:-mt-10 md:grid-cols-2 lg:-mt-14">
             <div className="group relative overflow-hidden rounded-[2rem] border border-sky-100 bg-gradient-to-br from-sky-50 via-white to-cyan-50 p-6 shadow-sm shadow-sky-100/70">
               <div className="absolute -right-10 -top-10 h-28 w-28 rounded-full bg-sky-200/25" />
               <div className="relative flex h-full flex-col gap-4">
