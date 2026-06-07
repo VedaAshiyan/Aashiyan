@@ -1,7 +1,7 @@
-export const UPI_ID = 'UJJBB83981756929@Ujjivan';
+export const UPI_ID = 'UJJBB83981756929@UJJIVAN';
 export const UPI_NAME = 'Aashiyan NGO';
 export const DONATION_NOTE = 'Donation to Aashiyan NGO';
-export const DONATION_QR = '/ujjivan_pay_scanner.jpeg';
+export const DONATION_QR = '/donation_qr_clean.png';
 
 export function buildUpiQuery(amount: number) {
   const params = new URLSearchParams({

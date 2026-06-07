@@ -202,7 +202,7 @@ export default function Donate() {
                 <img
                   src={DONATION_QR}
                   alt="Ujjivan Pay UPI QR — scan with any UPI app"
-                  className="w-20 h-20 rounded-lg bg-white p-1 shadow-sm object-cover object-center"
+                  className="h-24 w-24 rounded-lg bg-white p-2 shadow-sm object-contain [image-rendering:pixelated]"
                 />
                 <div>
                   <p className="text-slate-700 text-sm font-semibold leading-snug">
@@ -243,7 +243,7 @@ export default function Donate() {
               </div>
               <h3 className="font-display font-bold text-slate-800 text-xl mb-1">Ujjivan Pay — Scan to Donate</h3>
               <p className="text-slate-500 text-sm mb-5">
-                Same scanner as our standee. Works with Paytm, GPay, PhonePe, BHIM &amp; all UPI apps.
+                Scan with Paytm, GPay, PhonePe, BHIM, or any UPI app.
               </p>
 
               <a
@@ -251,11 +251,11 @@ export default function Donate() {
                 className="block"
                 aria-label={`Open UPI payment for ₹${payableAmount}`}
               >
-                <div className="mb-4 inline-block rounded-2xl bg-slate-50 p-3 shadow-inner transition-shadow hover:shadow-md">
+                <div className="mb-4 inline-block rounded-2xl bg-white p-4 shadow-inner ring-1 ring-slate-100 transition-shadow hover:shadow-md">
                   <img
                     src={DONATION_QR}
                     alt="Ujjivan Pay UPI QR Code"
-                    className="max-h-[58vh] w-full rounded-xl bg-white object-contain"
+                    className="mx-auto aspect-square w-full max-w-[320px] rounded-xl bg-white object-contain [image-rendering:pixelated]"
                   />
                 </div>
               </a>
@@ -264,7 +264,7 @@ export default function Donate() {
                 UPI ID: <span className="font-mono font-semibold text-slate-600">{UPI_ID}</span>
               </p>
               <p className="text-slate-400 text-[10px] mb-5">
-                Scan with any UPI app and enter the amount, or tap Open UPI App on mobile to pay ₹{payableAmount}.
+                Scan with any UPI app and enter the amount. On mobile, tap Open UPI App to pay ₹{payableAmount}.
               </p>
 
               <a

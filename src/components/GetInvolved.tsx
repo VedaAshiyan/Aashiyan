@@ -583,11 +583,11 @@ function DonateForm() {
               className="block"
               aria-label={`Open UPI payment for ₹${payableAmount}`}
             >
-              <div className="mb-4 inline-block rounded-2xl bg-slate-50 p-3 shadow-inner transition-shadow hover:shadow-md">
+              <div className="mb-4 inline-block rounded-2xl bg-white p-4 shadow-inner ring-1 ring-slate-100 transition-shadow hover:shadow-md">
                 <img
                   src={DONATION_QR}
                   alt="Aashiyan donation QR code"
-                  className="max-h-[58vh] w-full rounded-xl bg-white object-contain"
+                  className="mx-auto aspect-square w-full max-w-[320px] rounded-xl bg-white object-contain [image-rendering:pixelated]"
                 />
               </div>
             </a>
@@ -595,7 +595,7 @@ function DonateForm() {
               UPI ID: <span className="font-mono font-semibold text-slate-600">{UPI_ID}</span>
             </p>
             <p className="text-slate-400 text-[10px] mb-5">
-              Scan with any UPI app and enter the amount, or tap Open UPI App on mobile to pay ₹{payableAmount}.
+              Scan with any UPI app and enter the amount. On mobile, tap Open UPI App to pay ₹{payableAmount}.
             </p>
             <a
               href={upiLink}
