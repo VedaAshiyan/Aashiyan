@@ -53,6 +53,24 @@ export default function Hero() {
             &amp; Dream
           </h1>
           <div className="mt-5 h-1.5 w-full max-w-[20rem] bg-[#df6f5b]" />
+          <p className="mt-5 max-w-[21rem] text-base font-semibold leading-relaxed text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.45)]">
+            Supporting children of migrant workers with education, meals, care, and community,
+            because every child deserves a warm place to belong.
+          </p>
+          <div className="mt-5 flex flex-col gap-3">
+            <a
+              href="/#donate"
+              className="inline-flex min-h-12 items-center justify-center rounded-full bg-amber-400 px-7 py-3 text-base font-black text-white shadow-lg transition-all hover:bg-amber-500"
+            >
+              Donate Now
+            </a>
+            <a
+              href="/#getinvolved"
+              className="inline-flex min-h-12 items-center justify-center rounded-full border-2 border-white/80 bg-white/90 px-7 py-3 text-base font-black text-slate-800 shadow-sm transition-all hover:bg-white"
+            >
+              Volunteer With Us
+            </a>
+          </div>
         </div>
 
         <div className="absolute bottom-5 left-1/2 z-20 flex -translate-x-1/2 gap-2">
