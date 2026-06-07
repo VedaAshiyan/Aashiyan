@@ -56,14 +56,17 @@ const upiApps = [
 
 export default function Donate() {
   const { ref, visible } = useScrollReveal();
-  const [selected, setSelected] = useState(1000);
+  const [selected, setSelected] = useState(0);
   const [custom, setCustom] = useState('');
   const [showQR, setShowQR] = useState(false);
   const [copiedUpi, setCopiedUpi] = useState(false);
 
   const finalAmount = custom ? parseInt(custom) || 0 : selected;
-  const payableAmount = finalAmount || 100;
-  const upiLink = buildUpiLink(payableAmount);
+  const upiLink = buildUpiLink();
+  const whatsappDonationText =
+    finalAmount > 0
+      ? `Namaste Aashiyan! I would like to support your cause with a donation of ₹${finalAmount}. Please guide me on how to proceed.`
+      : 'Namaste Aashiyan! I would like to support your cause with a donation. Please guide me on how to proceed.';
 
   async function copyUpiId() {
     await navigator.clipboard.writeText(UPI_ID);
@@ -152,9 +155,7 @@ export default function Donate() {
               Scan QR to Pay
             </button>
             <a
-              href={`https://wa.me/919886262255?text=${encodeURIComponent(
-                `Namaste Aashiyan! I would like to support your cause with a donation of ₹${finalAmount}. Please guide me on how to proceed.`
-              )}`}
+              href={`https://wa.me/919886262255?text=${encodeURIComponent(whatsappDonationText)}`}
               target="_blank"
               rel="noopener noreferrer"
               className="w-full mt-3 flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba59] text-white font-bold py-3 rounded-xl transition-all hover:shadow-lg"
@@ -178,7 +179,7 @@ export default function Donate() {
               {upiApps.map((app) => (
                 <a
                   key={app.name}
-                  href={buildAppUpiLink(app.scheme, payableAmount)}
+                  href={buildAppUpiLink(app.scheme)}
                   className={`flex min-h-16 cursor-pointer items-center gap-3 rounded-2xl border-2 border-slate-200 bg-white px-4 py-4 transition-all hover:-translate-y-0.5 hover:shadow-md ${app.border}`}
                 >
                   <div className="w-10 h-10 shrink-0 flex items-center justify-center overflow-hidden">
@@ -253,7 +254,7 @@ export default function Donate() {
               <a
                 href={upiLink}
                 className="block"
-                aria-label={`Open UPI payment for ₹${payableAmount}`}
+                aria-label="Open UPI payment"
               >
                 <div className="mb-4 inline-block rounded-2xl bg-white p-4 shadow-inner ring-1 ring-slate-100 transition-shadow hover:shadow-md">
                   <QRCodeSVG
@@ -271,7 +272,7 @@ export default function Donate() {
                 UPI ID: <span className="font-mono font-semibold text-slate-600">{UPI_ID}</span>
               </p>
               <p className="text-slate-400 text-[10px] mb-5">
-                Scan with any UPI app and enter the amount. On mobile, tap Open UPI App to pay ₹{payableAmount}.
+                Scan with any UPI app and enter the amount you want to donate. On mobile, tap Open UPI App and enter the amount there.
               </p>
 
               <a

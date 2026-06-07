@@ -409,14 +409,12 @@ function DonateForm() {
   const [donationType, setDonationType] = useState('funds');
   const [message, setMessage] = useState('');
   const [submitted, setSubmitted] = useState(false);
-  const [selectedAmount, setSelectedAmount] = useState(1000);
+  const [selectedAmount, setSelectedAmount] = useState(0);
   const [customAmount, setCustomAmount] = useState('');
   const [showQR, setShowQR] = useState(false);
   const [copiedUpi, setCopiedUpi] = useState(false);
 
-  const finalAmount = customAmount ? parseInt(customAmount) || 0 : selectedAmount;
-  const payableAmount = finalAmount || 100;
-  const upiLink = buildUpiLink(payableAmount);
+  const upiLink = buildUpiLink();
 
   async function copyUpiId() {
     await navigator.clipboard.writeText(UPI_ID);
@@ -582,7 +580,7 @@ function DonateForm() {
             <a
               href={upiLink}
               className="block"
-              aria-label={`Open UPI payment for ₹${payableAmount}`}
+              aria-label="Open UPI payment"
             >
               <div className="mb-4 inline-block rounded-2xl bg-white p-4 shadow-inner ring-1 ring-slate-100 transition-shadow hover:shadow-md">
                 <QRCodeSVG
@@ -599,7 +597,7 @@ function DonateForm() {
               UPI ID: <span className="font-mono font-semibold text-slate-600">{UPI_ID}</span>
             </p>
             <p className="text-slate-400 text-[10px] mb-5">
-              Scan with any UPI app and enter the amount. On mobile, tap Open UPI App to pay ₹{payableAmount}.
+              Scan with any UPI app and enter the amount you want to donate. On mobile, tap Open UPI App and enter the amount there.
             </p>
             <a
               href={upiLink}
