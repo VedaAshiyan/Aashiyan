@@ -5,11 +5,13 @@ const slides = [
     src: '/hero-girls-portrait.png',
     alt: 'Two girls from Aashiyan standing together',
     imageClass: 'object-cover object-[center_16%] lg:object-[center_18%]',
+    mobileImageClass: 'object-cover object-[center_32%]',
   },
   {
     src: '/hero-aashiyan-crafts.png',
     alt: 'Children at Aashiyan holding handmade paper craft',
     imageClass: 'object-cover object-center',
+    mobileImageClass: 'object-cover object-[center_38%]',
   },
 ];
 
@@ -30,13 +32,20 @@ export default function Hero() {
       className="relative mt-[84px] overflow-hidden bg-[#F7F8FA] sm:mt-[92px] lg:mt-[88px] lg:min-h-[calc(100vh-88px)] lg:px-5 lg:py-0"
     >
       <div className="relative min-h-[calc(100svh-84px)] overflow-hidden sm:min-h-[calc(100svh-92px)] lg:hidden">
-        <img
-          src={slides[0].src}
-          alt={slides[0].alt}
-          className="absolute inset-0 h-full w-full object-cover object-[center_42%] brightness-110 saturate-125"
-        />
-        <div className="relative z-10 px-5 pt-[10rem] sm:px-6 sm:pt-[11.5rem]">
-          <h1 className="font-display max-w-none text-[clamp(2rem,10vw,3.1rem)] font-bold leading-[0.98] tracking-normal text-white drop-shadow-[0_3px_12px_rgba(0,0,0,0.45)]">
+        {slides.map((slide, index) => (
+          <img
+            key={slide.src}
+            src={slide.src}
+            alt={slide.alt}
+            className={`absolute inset-0 h-full w-full brightness-110 saturate-125 transition-opacity duration-700 ${slide.mobileImageClass} ${
+              index === currentSlide ? 'opacity-100' : 'opacity-0'
+            }`}
+          />
+        ))}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/10 to-black/35" />
+
+        <div className="relative z-10 flex min-h-[calc(100svh-84px)] flex-col justify-start px-5 pt-[6.25rem] sm:min-h-[calc(100svh-92px)] sm:px-6 sm:pt-[7rem]">
+          <h1 className="font-display max-w-none text-[clamp(1.95rem,9vw,3rem)] font-bold leading-[0.98] tracking-normal text-white drop-shadow-[0_3px_12px_rgba(0,0,0,0.45)]">
             <span className="whitespace-nowrap">A Safe Space to</span>
             <br />
             <span className="font-black text-amber-300">Learn, Grow</span>
@@ -44,6 +53,20 @@ export default function Hero() {
             &amp; Dream
           </h1>
           <div className="mt-5 h-1.5 w-full max-w-[20rem] bg-[#df6f5b]" />
+        </div>
+
+        <div className="absolute bottom-5 left-1/2 z-20 flex -translate-x-1/2 gap-2">
+          {slides.map((slide, index) => (
+            <button
+              key={slide.src}
+              type="button"
+              onClick={() => setCurrentSlide(index)}
+              aria-label={`Show hero slide ${index + 1}`}
+              className={`h-2.5 rounded-full transition-all ${
+                index === currentSlide ? 'w-8 bg-amber-400' : 'w-2.5 bg-white/75'
+              }`}
+            />
+          ))}
         </div>
       </div>
 
