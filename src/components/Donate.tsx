@@ -1,11 +1,12 @@
 import { useState } from 'react';
+import { QRCodeSVG } from 'qrcode.react';
 import { Heart, QrCode, Smartphone, ChevronRight } from 'lucide-react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import logoGpay from '../assets/payment-logos/logo_gpay.png';
 import logoPhonepe from '../assets/payment-logos/logo_phonepe.png';
 import logoPaytm from '../assets/payment-logos/logo_paytm.png';
 import logoBhim from '../assets/payment-logos/logo_bhim.png';
-import { buildAppUpiLink, buildUpiLink, DONATION_QR, UPI_ID } from '../lib/paymentLinks';
+import { buildAppUpiLink, buildUpiLink, UPI_ID } from '../lib/paymentLinks';
 
 const amounts = [
   { value: 500, desc: 'School Supplies', icon: '📚' },
@@ -199,10 +200,13 @@ export default function Donate() {
                 Ujjivan Pay scanner
               </p>
               <div className="flex items-center gap-4">
-                <img
-                  src={DONATION_QR}
-                  alt="Ujjivan Pay UPI QR — scan with any UPI app"
-                  className="h-24 w-24 rounded-lg bg-white p-2 shadow-sm object-contain [image-rendering:pixelated]"
+                <QRCodeSVG
+                  value={upiLink}
+                  size={96}
+                  marginSize={2}
+                  level="M"
+                  className="h-24 w-24 rounded-lg bg-white p-2 shadow-sm"
+                  aria-label="Ujjivan Pay UPI QR — scan with any UPI app"
                 />
                 <div>
                   <p className="text-slate-700 text-sm font-semibold leading-snug">
@@ -252,10 +256,13 @@ export default function Donate() {
                 aria-label={`Open UPI payment for ₹${payableAmount}`}
               >
                 <div className="mb-4 inline-block rounded-2xl bg-white p-4 shadow-inner ring-1 ring-slate-100 transition-shadow hover:shadow-md">
-                  <img
-                    src={DONATION_QR}
-                    alt="Ujjivan Pay UPI QR Code"
-                    className="mx-auto aspect-square w-full max-w-[320px] rounded-xl bg-white object-contain [image-rendering:pixelated]"
+                  <QRCodeSVG
+                    value={upiLink}
+                    size={320}
+                    marginSize={3}
+                    level="M"
+                    className="mx-auto aspect-square w-full max-w-[320px] rounded-xl bg-white"
+                    aria-label="Ujjivan Pay UPI QR Code"
                   />
                 </div>
               </a>

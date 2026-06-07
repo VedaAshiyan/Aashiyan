@@ -1,7 +1,8 @@
 import { useState } from 'react';
+import { QRCodeSVG } from 'qrcode.react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { Heart, BookOpen, Briefcase, QrCode, Smartphone } from 'lucide-react';
-import { buildUpiLink, DONATION_QR, UPI_ID } from '../lib/paymentLinks';
+import { buildUpiLink, UPI_ID } from '../lib/paymentLinks';
 
 type ModalView = 'volunteer' | 'internship' | 'donate' | null;
 type InvolvedCardData = {
@@ -584,10 +585,13 @@ function DonateForm() {
               aria-label={`Open UPI payment for ₹${payableAmount}`}
             >
               <div className="mb-4 inline-block rounded-2xl bg-white p-4 shadow-inner ring-1 ring-slate-100 transition-shadow hover:shadow-md">
-                <img
-                  src={DONATION_QR}
-                  alt="Aashiyan donation QR code"
-                  className="mx-auto aspect-square w-full max-w-[320px] rounded-xl bg-white object-contain [image-rendering:pixelated]"
+                <QRCodeSVG
+                  value={upiLink}
+                  size={320}
+                  marginSize={3}
+                  level="M"
+                  className="mx-auto aspect-square w-full max-w-[320px] rounded-xl bg-white"
+                  aria-label="Aashiyan donation QR code"
                 />
               </div>
             </a>
