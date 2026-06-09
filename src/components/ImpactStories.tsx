@@ -7,28 +7,28 @@ const stories = [
     age: 7,
     story:
       'Ravi arrived at Aashiyan unable to speak clearly due to a speech delay. After 8 months of consistent support from our counselor and teachers, he now participates confidently in class discussions. His mother says he comes home excited about school every day.',
-    image: 'https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg?auto=compress&cs=tinysrgb&w=400',
+    image: '/story-girl-hd.jpeg',
   },
   {
     name: 'Meera',
     age: 6,
     story:
       'Meera had never attended school before joining us. She was shy and struggled with basic literacy. Today, she is reading simple stories and helps younger children learn their letters. Her confidence has blossomed.',
-    image: 'https://images.pexels.com/photos/3807516/pexels-photo-3807516.jpeg?auto=compress&cs=tinysrgb&w=400',
+    image: '/nutrition-children-new.jpeg',
   },
   {
     name: 'Amit',
     age: 8,
     story:
       'Amit came from a family constantly moving for work. He had attended 4 different schools and felt lost. At Aashiyan, he found stability and care. He is now catching up academically and has discovered a love for drawing.',
-    image: 'https://images.pexels.com/photos/3807519/pexels-photo-3807519.jpeg?auto=compress&cs=tinysrgb&w=400',
+    image: '/daycare-children-new.png',
   },
   {
     name: 'Priya',
     age: 5,
     story:
       'Priya\'s family lived in a migrant worker colony with no access to early education. At Aashiyan\'s daycare, she has thrived — playing, learning numbers and letters, and developing friendships. She is now ready to enter formal school.',
-    image: 'https://images.pexels.com/photos/3807515/pexels-photo-3807515.jpeg?auto=compress&cs=tinysrgb&w=400',
+    image: '/mental-health-classroom.jpeg',
   },
 ];
 

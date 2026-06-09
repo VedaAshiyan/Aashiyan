@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { QRCodeSVG } from 'qrcode.react';
 import { Heart, QrCode, Smartphone, ChevronRight } from 'lucide-react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
-import logoGpay from '../assets/payment-logos/logo_gpay.png';
+import logoGpay from '../assets/payment-logos/logo_gpay_user.png';
 import logoPhonepe from '../assets/payment-logos/logo_phonepe.png';
 import logoPaytm from '../assets/payment-logos/logo_paytm.png';
 import logoBhim from '../assets/payment-logos/logo_bhim.png';
@@ -19,7 +19,7 @@ const GPay = () => (
   <img
     src={logoGpay}
     alt="Google Pay"
-    className="w-full h-full rounded-lg object-contain"
+    className="w-full h-full object-contain border-0 outline-none"
   />
 );
 
@@ -182,7 +182,7 @@ export default function Donate() {
                   href={buildAppUpiLink(app.scheme)}
                   className={`flex min-h-16 cursor-pointer items-center gap-3 rounded-2xl border-2 border-slate-200 bg-white px-4 py-4 transition-all hover:-translate-y-0.5 hover:shadow-md ${app.border}`}
                 >
-                  <div className="w-10 h-10 shrink-0 flex items-center justify-center overflow-hidden">
+                  <div className="w-10 h-10 shrink-0 flex items-center justify-center p-1">
                     <app.Logo />
                   </div>
                   <span className="text-slate-700 font-semibold text-sm">{app.name}</span>

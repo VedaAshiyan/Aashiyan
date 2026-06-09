@@ -108,30 +108,7 @@ const momentPhotos: GalleryPhoto[] = [
     span: 'md:col-span-1',
     created_at: '',
   },
-  {
-    id: 'two-girls-wide',
-    src: '/daily-life/daily-life-12.png',
-    alt: 'Two girls seated together at Aashiyan',
-    caption: 'Calm classroom moments',
-    span: 'md:col-span-1',
-    created_at: '',
-  },
-  {
-    id: 'two-girls-bright',
-    src: '/daily-life/daily-life-13.png',
-    alt: 'Two girls smiling in the Aashiyan classroom',
-    caption: 'Learning side by side',
-    span: 'md:col-span-1',
-    created_at: '',
-  },
-  {
-    id: 'child-chair',
-    src: '/daily-life/daily-life-14.png',
-    alt: 'Child seated and smiling in the Aashiyan classroom',
-    caption: 'Safe and seen',
-    span: 'md:col-span-1',
-    created_at: '',
-  },
+
 ];
 
 export default function Gallery() {

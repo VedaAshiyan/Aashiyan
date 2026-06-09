@@ -2,11 +2,14 @@ import { ArrowLeft, Calendar, User, BookOpen } from 'lucide-react';
 import type { BlogPost } from './Blog';
 
 function getBlogImagePositionClass(imageUrl: string) {
-  return imageUrl.includes('menstrual-awareness-girls')
+  if (imageUrl.includes('daily-life-02')) return 'object-[center_25%]';
+  if (
+    imageUrl.includes('menstrual-awareness-girls')
     || imageUrl.includes('story-girl-hd')
     || imageUrl.includes('migrant-workers-stairs')
-    ? 'object-top'
-    : 'object-center';
+  )
+    return 'object-top';
+  return 'object-center';
 }
 
 export default function BlogDetail({
@@ -41,7 +44,7 @@ export default function BlogDetail({
             <img
               src={blog.cover_image_url}
               alt={blog.title}
-              className={`w-full h-64 sm:h-80 object-cover ${getBlogImagePositionClass(blog.cover_image_url)}`}
+              className={`w-full aspect-[3/4] object-cover ${getBlogImagePositionClass(blog.cover_image_url)}`}
             />
           </div>
         ) : (

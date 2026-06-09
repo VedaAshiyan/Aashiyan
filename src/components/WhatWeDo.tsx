@@ -2,7 +2,7 @@ import { useScrollReveal } from '../hooks/useScrollReveal';
 import { BookOpen, Smile, Apple, Heart, ArrowRight } from 'lucide-react';
 import type { ServiceType } from './WhatWeDoDetail';
 
-type Offering = { key: ServiceType; icon: typeof BookOpen; title: string; desc: string; color: string; iconColor: string; iconBg: string; image?: string };
+type Offering = { key: ServiceType; icon: typeof BookOpen; title: string; desc: string; color: string; iconColor: string; iconBg: string; image?: string; imagePosition?: string };
 
 const offerings: Offering[] = [
   {
@@ -14,6 +14,7 @@ const offerings: Offering[] = [
     iconColor: 'text-sky-600',
     iconBg: 'bg-sky-100',
     image: '/education-cover.png',
+    imagePosition: 'object-[center_35%]',
   },
   {
     key: 'daycare',
@@ -23,7 +24,8 @@ const offerings: Offering[] = [
     color: 'bg-amber-50',
     iconColor: 'text-amber-600',
     iconBg: 'bg-amber-100',
-    image: '/daycare-children-hd.jpeg',
+    image: '/daycare-children-new.png',
+    imagePosition: 'object-[center_30%]',
   },
   {
     key: 'nutrition',
@@ -33,7 +35,8 @@ const offerings: Offering[] = [
     color: 'bg-emerald-50',
     iconColor: 'text-emerald-600',
     iconBg: 'bg-emerald-100',
-    image: '/nutrition-children.jpeg',
+    image: '/nutrition-children-new.jpeg',
+    imagePosition: 'object-[center_30%]',
   },
   {
     key: 'wellbeing',
@@ -44,6 +47,7 @@ const offerings: Offering[] = [
     iconColor: 'text-rose-500',
     iconBg: 'bg-rose-100',
     image: '/wellbeing-cover.png',
+    imagePosition: 'object-[center_30%]',
   },
 ];
 
@@ -104,16 +108,16 @@ function OfferingCard({
       <button
         onClick={() => onServiceClick?.(offering.key)}
         style={{ transitionDelay: `${index * 100}ms` }}
-        className={`w-full group ${offering.color} rounded-3xl p-8 transition-all duration-700 hover:shadow-lg hover:-translate-y-1 cursor-pointer text-left ${
+        className={`w-full group ${offering.color} rounded-3xl p-6 transition-all duration-700 hover:shadow-lg hover:-translate-y-1 cursor-pointer text-left ${
           visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}
       >
         {offering.image && (
-          <div className="mb-6 aspect-[4/3] overflow-hidden rounded-2xl bg-white">
+          <div className="mb-6 aspect-[3/4] overflow-hidden rounded-2xl border-4 border-white bg-white shadow-md">
             <img
               src={offering.image}
               alt={offering.title}
-              className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+              className={`h-full w-full object-cover transition-transform duration-500 group-hover:scale-105 ${offering.imagePosition || 'object-center'}`}
             />
           </div>
         )}

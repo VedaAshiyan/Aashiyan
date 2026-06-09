@@ -14,6 +14,7 @@ interface ServiceDetail {
   iconBg: string;
   iconColor: string;
   coverImage: string;
+  coverImagePosition?: string;
 }
 
 const serviceDetails: Record<ServiceType, ServiceDetail> = {
@@ -47,6 +48,7 @@ Teachers are trained to be patient, nurturing, and responsive to each child's un
     iconBg: 'bg-sky-100',
     iconColor: 'text-sky-600',
     coverImage: '/education-cover.png',
+    coverImagePosition: 'object-[center_35%]',
   },
   daycare: {
     title: 'Day Care',
@@ -76,7 +78,8 @@ Our caregivers understand early childhood development and create an environment 
     bgColor: 'bg-amber-50',
     iconBg: 'bg-amber-100',
     iconColor: 'text-amber-600',
-    coverImage: '/daycare-children-hd.jpeg',
+    coverImage: '/daycare-children-new.png',
+    coverImagePosition: 'object-[center_25%]',
   },
   nutrition: {
     title: 'Nutrition',
@@ -110,7 +113,8 @@ Our nutrition program ensures:
     bgColor: 'bg-emerald-50',
     iconBg: 'bg-emerald-100',
     iconColor: 'text-emerald-600',
-    coverImage: '/nutrition-children.jpeg',
+    coverImage: '/nutrition-children-new.jpeg',
+    coverImagePosition: 'object-[center_30%]',
   },
   wellbeing: {
     title: 'Mental & Physical Well-being',
@@ -148,6 +152,7 @@ Every child is seen as a whole person, not just a student.`,
     iconBg: 'bg-rose-100',
     iconColor: 'text-rose-600',
     coverImage: '/wellbeing-cover.png',
+    coverImagePosition: 'object-[center_30%]',
   },
 };
 
@@ -179,7 +184,7 @@ export default function WhatWeDoDetail({
           <img
             src={details.coverImage}
             alt={details.title}
-            className="w-full h-96 sm:h-[560px] object-cover object-[center_50%]"
+            className={`w-full aspect-[3/4] object-cover ${details.coverImagePosition || 'object-center'}`}
           />
         </div>
 

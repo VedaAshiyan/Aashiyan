@@ -44,7 +44,7 @@ export default function Hero() {
         ))}
         <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/10 to-black/35" />
 
-        <div className="relative z-10 flex min-h-[calc(100svh-84px)] flex-col justify-start px-5 pt-[24rem] sm:min-h-[calc(100svh-92px)] sm:px-6 sm:pt-[25rem]">
+        <div className="relative z-10 flex min-h-[calc(100svh-84px)] flex-col justify-start px-5 pt-[18rem] pb-16 sm:min-h-[calc(100svh-92px)] sm:px-6 sm:pt-[22rem] sm:pb-16">
           <h1 className="font-display max-w-none text-[clamp(1.95rem,9vw,3rem)] font-bold leading-[0.98] tracking-normal text-white drop-shadow-[0_3px_12px_rgba(0,0,0,0.45)]">
             <span className="whitespace-nowrap">A Safe Space to</span>
             <br />
@@ -53,7 +53,7 @@ export default function Hero() {
             &amp; Dream
           </h1>
           <div className="mt-5 h-1.5 w-full max-w-[20rem] bg-[#df6f5b]" />
-          <p className="mt-5 max-w-[21rem] rounded-2xl bg-black/35 px-4 py-3 text-base font-bold leading-relaxed text-white shadow-lg backdrop-blur-[2px] drop-shadow-[0_3px_14px_rgba(0,0,0,0.75)]">
+          <p className="mt-5 max-w-[21rem] rounded-2xl border border-white/10 bg-black/65 px-4 py-3 text-base font-bold leading-relaxed !text-white shadow-lg backdrop-blur-[2px]">
             Supporting children of migrant workers with education, meals, care, and community,
             because every child deserves a warm place to belong.
           </p>

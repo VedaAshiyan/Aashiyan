@@ -30,6 +30,7 @@ function scrollToStoriesSection() {
 }
 
 function getBlogImagePositionClass(imageUrl: string) {
+  if (imageUrl.includes('daily-life-02')) return 'object-[center_30%]';
   return imageUrl.includes('menstrual-awareness-girls')
     || imageUrl.includes('story-girl-hd')
     || imageUrl.includes('migrant-workers-stairs')
@@ -132,7 +133,7 @@ At Aashiyan, we believe every girl deserves:
     slug: 'the-girl-who-chose-a-story-over-silence',
     excerpt:
       'A story of Lata, Ruby teacher, and how a single book can become a bridge toward equal childhoods and brighter futures.',
-    cover_image_url: '/gallery/moment-01.png',
+    cover_image_url: '/daily-life/daily-life-02.png',
     author_name: 'Meghangee Chakraborty, B.A. Student, Christ University',
     published: true,
     created_at: '2026-05-24T00:00:00.000Z',
