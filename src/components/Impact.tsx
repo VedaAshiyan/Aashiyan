@@ -113,7 +113,7 @@ export default function Impact() {
             Our Impact
           </h2>
           <p className="font-display mb-6 text-2xl font-bold leading-[1.05] text-slate-800 sm:text-3xl lg:text-4xl">
-            Small numbers. Enormous lives.
+            Small numbers. Larger lives.
           </p>
           <p className="text-slate-500 text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed">
             Each number below is a child who ate, learned, laughed, and felt safe — because of you.
