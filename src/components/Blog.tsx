@@ -30,7 +30,7 @@ function scrollToStoriesSection() {
 }
 
 function getBlogImagePositionClass(imageUrl: string) {
-  if (imageUrl.includes('daily-life-02')) return 'object-top sm:object-[center_30%]';
+  if (imageUrl.includes('daily-life-02')) return 'object-[center_45%] sm:object-[center_30%]';
   return imageUrl.includes('menstrual-awareness-girls')
     || imageUrl.includes('story-girl-hd')
     || imageUrl.includes('migrant-workers-stairs')
