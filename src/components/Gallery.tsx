@@ -32,7 +32,7 @@ const momentPhotos: GalleryPhoto[] = [
     id: 'early-learning',
     src: '/daily-life/daily-life-15.png',
     alt: 'Young child stacking colorful blocks at Aashiyan',
-    caption: 'Learning through play',
+    caption: 'Creative Minds at Work',
     span: 'md:col-span-1',
     created_at: '',
   },
