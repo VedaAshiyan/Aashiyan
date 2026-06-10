@@ -72,7 +72,7 @@ export default function GetInvolved() {
         </div>
 
         {/* Card grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mb-8 max-w-6xl mx-auto items-center">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-[1.5fr_2fr_1.5fr] gap-6 lg:gap-8 mb-8 max-w-6xl mx-auto items-center">
           {cards.map((card, i) => (
             <InvolvedCard
               key={card.title}
@@ -111,8 +111,8 @@ function InvolvedCard({
       style={{ transitionDelay: `${index * 100}ms` }}
       className={`group relative overflow-hidden rounded-[2rem] shadow-xl cursor-pointer transition-all duration-500 hover:-translate-y-2 ${
         isDonate
-          ? 'sm:col-span-2 h-[420px] lg:h-[460px]'
-          : 'h-[300px] sm:h-[320px] lg:h-[340px]'
+          ? 'sm:col-span-2 lg:col-span-1 h-[420px] lg:h-[460px]'
+          : 'h-[380px] sm:h-[320px] lg:h-[340px]'
       } ${
         visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
       }`}
@@ -121,7 +121,7 @@ function InvolvedCard({
       <img
         src={card.img}
         alt={card.title}
-        className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+        className="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-500"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/55 to-black/20" />
       <div className={`absolute inset-0 flex flex-col justify-end text-white ${isDonate ? 'p-8 lg:p-10' : 'p-5'}`}>

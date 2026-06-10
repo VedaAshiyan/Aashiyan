@@ -32,16 +32,11 @@ export default function Hero() {
       className="relative mt-[84px] overflow-hidden bg-[#F7F8FA] sm:mt-[92px] lg:mt-[88px] lg:min-h-[calc(100vh-88px)] lg:px-5 lg:py-0"
     >
       <div className="relative min-h-[calc(100svh-84px)] overflow-hidden sm:min-h-[calc(100svh-92px)] lg:hidden">
-        {slides.map((slide, index) => (
-          <img
-            key={slide.src}
-            src={slide.src}
-            alt={slide.alt}
-            className={`absolute inset-0 h-full w-full brightness-110 saturate-125 transition-opacity duration-700 ${slide.mobileImageClass} ${
-              index === currentSlide ? 'opacity-100' : 'opacity-0'
-            }`}
-          />
-        ))}
+        <img
+          src={slides[0].src}
+          alt={slides[0].alt}
+          className={`absolute inset-0 h-full w-full brightness-110 saturate-125 ${slides[0].mobileImageClass}`}
+        />
         <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/10 to-black/35" />
 
         <div className="relative z-10 flex min-h-[calc(100svh-84px)] flex-col justify-start px-5 pt-[18rem] pb-16 sm:min-h-[calc(100svh-92px)] sm:px-6 sm:pt-[22rem] sm:pb-16">
@@ -73,19 +68,7 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="absolute bottom-5 left-1/2 z-20 flex -translate-x-1/2 gap-2">
-          {slides.map((slide, index) => (
-            <button
-              key={slide.src}
-              type="button"
-              onClick={() => setCurrentSlide(index)}
-              aria-label={`Show hero slide ${index + 1}`}
-              className={`h-2.5 rounded-full transition-all ${
-                index === currentSlide ? 'w-8 bg-amber-400' : 'w-2.5 bg-white/75'
-              }`}
-            />
-          ))}
-        </div>
+
       </div>
 
       <div className="mx-auto hidden max-w-7xl items-center gap-10 lg:grid lg:min-h-[calc(100vh-88px)] lg:grid-cols-[0.92fr_1.08fr] lg:gap-16">

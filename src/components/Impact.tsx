@@ -139,14 +139,20 @@ export default function Impact() {
                 <span className="block">Bright Futures.</span>
                 <span className="block">Every Child.</span>
               </p>
-              <p className="mb-7 max-w-2xl text-xl font-medium leading-relaxed text-slate-800 sm:text-2xl">
-                Years ago, I dreamt of creating a safe and happy space for children of migrant
-                workers; a place where they could learn, play, laugh, feel heard, and simply be
-                children.
+              <p className="mb-5 max-w-2xl text-xl font-medium leading-relaxed text-slate-800 sm:text-2xl">
+                Aashiyan began with a simple dream - to create a safe, happy space where children of migrant workers could learn, play, grow, and feel cared for.
+              </p>
+              <p className="mb-5 max-w-2xl text-xl font-medium leading-relaxed text-slate-800 sm:text-2xl">
+                What started as one room, one teacher, a handful of children, and a lot of hope has slowly grown into a vibrant community supported by countless kind hearts. Every contribution, big or small, has helped us expand our reach, provide nutritious meals, and create better opportunities for the children we serve.
+              </p>
+              <p className="mb-5 max-w-2xl text-xl font-medium leading-relaxed text-slate-800 sm:text-2xl">
+                This journey has reaffirmed my belief that people genuinely want to help when they can trust that their support is making a difference. Aashiyan is not just a school; it is a community built on compassion, trust, and shared purpose.
+              </p>
+              <p className="mb-5 max-w-2xl text-xl font-medium leading-relaxed text-slate-800 sm:text-2xl">
+                I am deeply grateful to everyone who has believed in this dream and helped bring it to life. Together, we are creating a brighter future for these children.
               </p>
               <p className="mb-8 max-w-2xl text-xl font-medium leading-relaxed text-slate-800 sm:text-2xl">
-                What began with one room, one teacher, a few children, and a lot of hope has grown
-                through consistency, trust, and the kindness of people who believed in the dream.
+                Thank you for being part of our village.
               </p>
               <div className="space-y-3">
                 <div className="font-display text-2xl font-bold text-slate-900">
