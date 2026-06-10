@@ -69,7 +69,7 @@ export default function About() {
                 <div>
                   <div className="mb-2 text-lg font-black text-slate-900">Our Vision</div>
                   <p className="text-base font-medium leading-relaxed text-slate-700">
-                    A world where every child has access to safety, learning, dignity, and opportunities to grow.
+                    To build a space such that no child is denied access to safety, learning, dignity and opportunities to grow.
                   </p>
                 </div>
               </div>
