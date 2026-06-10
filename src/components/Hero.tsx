@@ -43,7 +43,7 @@ export default function Hero() {
           <h1 className="font-display max-w-none text-[clamp(1.95rem,9vw,3rem)] font-bold leading-[0.98] tracking-normal text-white drop-shadow-[0_3px_12px_rgba(0,0,0,0.45)]">
             <span className="whitespace-nowrap">A Safe Space to</span>
             <br />
-            <span className="font-black text-amber-300">Learn, Grow</span>
+            <span className="font-black text-white">Learn, Grow</span>
             <br />
             &amp; Dream
           </h1>
