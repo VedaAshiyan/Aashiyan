@@ -71,7 +71,7 @@ export default function WhatWeDo({ onServiceClick }: { onServiceClick?: (service
             What We Do
           </p>
           <p className="mx-auto max-w-3xl text-xl font-medium leading-relaxed text-slate-800 sm:text-2xl">
-            A complete support system designed for the whole child — mind, body, and spirit.
+            A complete support system designed for the holistic development of a child.
           </p>
         </div>
 
