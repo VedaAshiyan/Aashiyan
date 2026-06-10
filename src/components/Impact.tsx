@@ -8,7 +8,7 @@ const stats = [
     value: 55,
     suffix: '+',
     label: 'Kids',
-    description: 'Across 3 locations in the city',
+    description: 'Basapura Road in Bangalore',
     color: 'text-sky-500',
     bg: 'bg-sky-50',
     iconBg: 'bg-sky-100',
