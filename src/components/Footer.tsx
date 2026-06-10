@@ -15,7 +15,7 @@ export default function Footer() {
               />
             </div>
             <p className="text-slate-400 text-sm leading-relaxed mb-5">
-              A safe learning and daycare space for the children of migrant workers — built on love, sustained by community.
+              Your support helps provide learning materials, meals, care, and a safe space for every child at Aashiyan.
             </p>
             <div className="flex items-center gap-3">
               <a
