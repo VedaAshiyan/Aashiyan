@@ -37,10 +37,10 @@ export default function Hero() {
           alt={slides[0].alt}
           className={`absolute inset-0 h-full w-full brightness-110 saturate-125 ${slides[0].mobileImageClass}`}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/10 to-black/35" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/40" />
 
         <div className="relative z-10 flex min-h-[calc(100svh-84px)] flex-col justify-start px-5 pt-[18rem] pb-16 sm:min-h-[calc(100svh-92px)] sm:px-6 sm:pt-[22rem] sm:pb-16">
-          <h1 className="font-display max-w-none text-[clamp(1.95rem,9vw,3rem)] font-bold leading-[0.98] tracking-normal text-white drop-shadow-[0_3px_12px_rgba(0,0,0,0.45)]">
+          <h1 className="font-display max-w-none text-[clamp(1.95rem,9vw,3rem)] font-bold leading-[0.98] tracking-normal text-white drop-shadow-[0_4px_20px_rgba(0,0,0,0.75)]">
             <span className="whitespace-nowrap">A Safe Space to</span>
             <br />
             <span className="font-black text-white">Learn, Grow</span>
