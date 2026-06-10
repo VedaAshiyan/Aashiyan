@@ -117,7 +117,7 @@ function OfferingCard({
             <img
               src={offering.image}
               alt={offering.title}
-              className={`h-full w-full object-cover transition-transform duration-500 group-hover:scale-105 ${offering.imagePosition || 'object-center'}`}
+              className={`h-full w-full object-cover transition-transform duration-500 group-hover:scale-105 ${offering.imagePosition || 'object-center'} ${offering.key === 'nutrition' ? 'brightness-125 saturate-110' : ''}`}
             />
           </div>
         )}
